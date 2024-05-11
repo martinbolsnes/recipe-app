@@ -12,8 +12,8 @@ export const Header = () => {
     >
       <div>
         <Link href='/' className={cn('flex items-center gap-2')}>
-          <Utensils className={cn('w-6 h-6 text-primary')} />
-          <h1 className={cn('text-lg font-bold')}>TastyBitz</h1>
+          <Utensils className={cn('w-4 h-4 text-primary')} />
+          <h1 className={cn('text-lg font-bold')}>Yumz</h1>
         </Link>
       </div>
       <div className={cn('flex items-center gap-4')}>
