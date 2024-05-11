@@ -1,23 +1,5 @@
-'use client';
-
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/9HSzeK355np
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
-import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { useState } from 'react';
-import {
-  DialogTitle,
-  DialogDescription,
-  DialogHeader,
-  DialogFooter,
-  DialogContent,
-  Dialog,
-} from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
-import { Header } from './components/Header';
 import { SearchInput } from './components/SearchInput';
 import { DropdownMenuComponent } from './components/DropdownMenu';
 import { CategoryButtons } from './components/CategoryButtons';
@@ -39,7 +21,10 @@ export default function Page() {
           </div>
           <div className={cn('flex items-center justify-end mb-4 mt-4')}>
             <div className={cn('flex items-center gap-4')}>
-              <Link className={cn('text-primary hover:underline')} href='#'>
+              <Link
+                className={cn('text-primary hover:underline')}
+                href='/recipes'
+              >
                 View all
               </Link>
             </div>
@@ -49,9 +34,6 @@ export default function Page() {
               'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'
             )}
           >
-            <Card />
-            <Card />
-            <Card />
             <Card />
             <Card />
             <Card />
