@@ -15,7 +15,7 @@ export const DropdownMenuComponent = () => {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button size='sm' variant='outline'>
+          <Button size='default' variant='outline'>
             <Filter className={cn('w-4 h-4 mr-2')} />
             Filter
           </Button>
