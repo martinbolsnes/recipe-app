@@ -9,7 +9,6 @@ import type { RecipeType } from '@/types';
 
 export const Card = async () => {
   const recipes: RecipeType[] = await getRecipe();
-  const image = recipes[0].image;
 
   return (
     <>
@@ -19,10 +18,10 @@ export const Card = async () => {
           className={cn('bg-white rounded-md shadow-md overflow-hidden')}
         >
           <Image
-            alt={image?.alt}
+            alt={recipes.image?.alt}
             className={cn('w-full h-48 object-cover')}
             height={250}
-            src={image?.image}
+            src={recipes.image?.image}
             style={{
               aspectRatio: '400/250',
               objectFit: 'cover',
