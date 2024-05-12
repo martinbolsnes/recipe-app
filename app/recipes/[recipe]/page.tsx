@@ -15,6 +15,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = params.recipe;
   const recipe: RecipeType = await getRecipeBySlug(slug);
+  console.log(recipe.name);
 
   return {
     title: `${recipe.name}`,
@@ -28,9 +29,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Recipe({ params }: Props) {
-  if (!params || !params.recipe) {
-    throw new Error('params or params.recipe is undefined');
-  }
   const slug = params.recipe;
   const recipe: RecipeType[] = await getRecipeBySlug(slug);
   return (
