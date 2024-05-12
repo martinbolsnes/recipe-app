@@ -35,8 +35,6 @@ export default function Page() {
             )}
           >
             <Card />
-            <Card />
-            <Card />
           </div>
         </section>
       </main>
