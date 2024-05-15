@@ -7,12 +7,34 @@ import Link from 'next/link';
 import { getRecipe } from '@/sanity/sanity.query';
 import type { RecipeType } from '@/types';
 
-export const Card = async () => {
+export default async function Card({
+  query,
+  currentPage,
+}: {
+  query: string;
+  currentPage: number;
+}) {
   const recipes: RecipeType[] = await getRecipe();
+
+  const filteredRecipes = recipes.filter((recipe) => {
+    const name =
+      recipe.name && typeof recipe.name === 'string'
+        ? recipe.name.toLowerCase()
+        : '';
+    const shortDescription =
+      recipe.shortDescription && typeof recipe.shortDescription === 'string'
+        ? recipe.shortDescription.toLowerCase()
+        : '';
+
+    return (
+      name.includes(query?.toLowerCase() || '') ||
+      shortDescription.includes(query?.toLowerCase() || '')
+    );
+  });
 
   return (
     <>
-      {recipes.map((recipes) => (
+      {filteredRecipes.map((recipes) => (
         <div
           key={recipes._id}
           className={cn('bg-white rounded-md shadow-md overflow-hidden')}
@@ -49,4 +71,4 @@ export const Card = async () => {
       ))}
     </>
   );
-};
+}
