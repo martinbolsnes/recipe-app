@@ -8,7 +8,7 @@ import {
   DropdownMenu,
 } from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
-import { Filter } from 'lucide-react';
+import { Filter, Fish, Beef, Wheat, Salad } from 'lucide-react';
 
 export const DropdownMenuComponent = () => {
   return (
@@ -23,10 +23,22 @@ export const DropdownMenuComponent = () => {
         <DropdownMenuContent className={cn('w-56 p-2')}>
           <DropdownMenuLabel>Filter by:</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuCheckboxItem>Veggie</DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem>Meat</DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem>Fish</DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem>Pasta</DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem>
+            <Salad className={cn('w-4 h-4 mr-2')} />
+            Veggie
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem>
+            <Beef className={cn('w-4 h-4 mr-2')} />
+            Meat
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem>
+            <Fish className={cn('w-4 h-4 mr-2')} />
+            Fish
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem>
+            <Wheat className={cn('w-4 h-4 mr-2')} />
+            Pasta
+          </DropdownMenuCheckboxItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </>
