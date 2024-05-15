@@ -40,8 +40,11 @@ export const Header = () => {
             </Button>
           </SheetTrigger>
           <SheetContent>
-            <SheetHeader>
-              <SheetTitle>Navigation</SheetTitle>
+            <SheetHeader className={cn('flex')}>
+              <Link href='/' className={cn('flex items-center gap-2')}>
+                <Utensils className={cn('w-4 h-4 text-primary')} />
+                <h1 className={cn('text-lg font-bold')}>MunchMate</h1>
+              </Link>
             </SheetHeader>
             <div className={cn('flex flex-col items-end gap-4 py-6 text-lg')}>
               <Link href='/recipes'>All recipes</Link>
