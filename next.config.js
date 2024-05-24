@@ -9,6 +9,11 @@ module.exports = {
         hostname: 'cdn.sanity.io',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+        port: '',
+      },
     ],
   },
 };
