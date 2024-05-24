@@ -15,7 +15,7 @@ const icons = {
 export const CategoryButtons = async () => {
   const categories: CategoryType[] = await getCategories();
   return (
-    <div className={cn('flex items-center gap-4')}>
+    <div className={cn('flex flex-wrap items-center gap-4')}>
       {categories.map((category) => (
         <Button key={category._id} size='sm' variant='outline'>
           {icons[category.icon as keyof typeof icons]}
