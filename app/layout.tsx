@@ -11,7 +11,7 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: 'Yumz',
+  title: 'MunchMate',
   description: 'Your favorite recipes in one place',
 };
 
