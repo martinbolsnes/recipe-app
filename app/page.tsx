@@ -30,14 +30,14 @@ export default function Page({
             <CategoryButtons />
           </div>
           <div className={cn('flex items-center justify-end mb-4 mt-4')}>
-            <div className={cn('flex items-center gap-4')}>
+            {/* <div className={cn('flex items-center gap-4')}>
               <Link
                 className={cn('text-primary hover:underline')}
                 href='/recipes'
               >
                 View all
               </Link>
-            </div>
+            </div> */}
           </div>
           <div
             className={cn(
