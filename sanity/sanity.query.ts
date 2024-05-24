@@ -13,7 +13,7 @@ export async function getRecipe() {
       ingredients,
       instructions,
     }`,
-    { revalidate: 1 }
+    { revalidate: 60 }
   );
 }
 
@@ -24,7 +24,7 @@ export async function getCategories() {
       name,
       icon,
     }`,
-    { revalidate: 1 }
+    { revalidate: 60 }
   );
 }
 
@@ -40,6 +40,6 @@ export async function getRecipeBySlug(slug: string) {
       ingredients,
       instructions,
     }`,
-    { slug, revalidate: 1 }
+    { slug, revalidate: 60 }
   );
 }
