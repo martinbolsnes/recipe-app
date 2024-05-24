@@ -14,16 +14,15 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = params.recipe;
-  const recipe: RecipeType = await getRecipeBySlug(slug);
-  console.log(recipe.name);
+  const recipe: RecipeType[] = await getRecipeBySlug(slug);
 
   return {
-    title: `${recipe.name}`,
-    description: recipe.shortDescription,
+    title: `${recipe[0].name}`,
+    description: recipe[0].shortDescription,
     openGraph: {
-      images: recipe.image?.image || 'fallback image',
-      title: recipe.name,
-      description: recipe.shortDescription,
+      images: recipe[0].image?.image || 'fallback image',
+      title: recipe[0].name,
+      description: recipe[0].shortDescription,
     },
   };
 }
