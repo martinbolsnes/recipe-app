@@ -27,7 +27,7 @@ export const SearchInput = ({ placeholder }: { placeholder: string }) => {
       />
       <Input
         className={cn(
-          'pl-10 pr-4 py-2 rounded-md bg-gray-100 focus:bg-white focus:ring-2 focus:ring-primary focus:border-primary'
+          'text-base pl-10 pr-4 py-2 rounded-md bg-gray-100 focus:bg-white focus:ring-2 focus:ring-primary focus:border-primary'
         )}
         placeholder={placeholder}
         type='search'
