@@ -13,7 +13,13 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import UseUserName from './UseAvatar';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+
 import UserAvatar from './UseAvatar';
 
 export const Header = async () => {
@@ -31,15 +37,24 @@ export const Header = async () => {
         </Link>
       </div>
       <div className={cn('flex items-center gap-4')}>
-        <Button size='sm' variant='default'>
-          <PartyPopper className={cn('w-4 h-4 mr-2')} />
-          Surprise Me
-        </Button>
         {session?.user ? (
-          <UserAvatar />
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <UserAvatar />
+              </TooltipTrigger>
+              <TooltipContent>
+                <div className={cn('flex flex-col gap-4')}>
+                  <Link href='/'>Profile</Link>
+                  <Link href='/'>Settings</Link>
+                  <Link href='/logout'>Logout</Link>
+                </div>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         ) : (
           <Link href='/login'>
-            <Button size='sm' variant='ghost'>
+            <Button size='sm' variant='outline'>
               Login
             </Button>
           </Link>
@@ -71,8 +86,12 @@ export const Header = async () => {
                 <Link href='/recipes'>FAQ</Link>
               </SheetTrigger>
             </div>
-            <div className={cn('py-4 flex justify-end w-full')}>
-              <Button size='lg' variant='default'>
+            <div className={cn('py-4 flex flex-col w-full gap-4')}>
+              <Button size='default' variant='default'>
+                <PartyPopper className={cn('w-4 h-4 mr-2')} />
+                Surprise Me
+              </Button>
+              <Button size='default' variant='secondary'>
                 <Plus className={cn('w-4 h-4 mr-2')} />
                 Add Recipe
               </Button>
