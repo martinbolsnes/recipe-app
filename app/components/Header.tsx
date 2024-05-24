@@ -1,9 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { auth } from '../../auth';
 import { Menu, PartyPopper, Plus, Utensils } from 'lucide-react';
 import Link from 'next/link';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
 import {
   Sheet,
   SheetClose,
@@ -14,8 +13,11 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import UseUserName from './UseAvatar';
+import UserAvatar from './UseAvatar';
 
-export const Header = () => {
+export const Header = async () => {
+  const session = await auth();
   return (
     <header
       className={cn(
@@ -33,6 +35,15 @@ export const Header = () => {
           <PartyPopper className={cn('w-4 h-4 mr-2')} />
           Surprise Me
         </Button>
+        {session?.user ? (
+          <UserAvatar />
+        ) : (
+          <Link href='/login'>
+            <Button size='sm' variant='ghost'>
+              Login
+            </Button>
+          </Link>
+        )}
         <Sheet>
           <SheetTrigger asChild>
             <Button variant='ghost'>
@@ -47,10 +58,18 @@ export const Header = () => {
               </Link>
             </SheetHeader>
             <div className={cn('flex flex-col items-end gap-4 py-6 text-lg')}>
-              <Link href='/recipes'>All recipes</Link>
-              <Link href='/recipes'>Categories</Link>
-              <Link href='/recipes'>About</Link>
-              <Link href='/recipes'>FAQ</Link>
+              <SheetTrigger asChild>
+                <Link href='/recipes'>All recipes</Link>
+              </SheetTrigger>
+              <SheetTrigger asChild>
+                <Link href='/recipes'>Categories</Link>
+              </SheetTrigger>
+              <SheetTrigger asChild>
+                <Link href='/recipes'>About</Link>
+              </SheetTrigger>
+              <SheetTrigger asChild>
+                <Link href='/recipes'>FAQ</Link>
+              </SheetTrigger>
             </div>
             <div className={cn('py-4 flex justify-end w-full')}>
               <Button size='lg' variant='default'>
