@@ -2,6 +2,7 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { getRecipe } from '@/sanity/sanity.query';
 import type { RecipeType } from '@/types';
+import Link from 'next/link';
 
 export default async function FeaturedSection() {
   const featuredRecipes: RecipeType[] = await getRecipe();
@@ -39,26 +40,29 @@ export default async function FeaturedSection() {
           )}
         >
           {featured.map((recipe) => (
-            <div
+            <Link
               key={recipe._id}
+              href={`/recipes/${recipe.slug}`}
               className={cn(
                 'flex flex-col justify-between rounded-md bg-background shadow-sm transition-all hover:shadow-md overflow-hidden cursor-pointer'
               )}
             >
-              <Image
-                alt={recipe.image.alt}
-                className={cn('w-full h-42 aspect-video object-cover')}
-                height='200'
-                src={recipe.image.image}
-                width='300'
-              />
-              <div className={cn('space-y-2 p-4')}>
-                <h3 className={cn('text-xl font-bold')}>{recipe.name}</h3>
-                <p className={cn('text-foreground/60')}>
-                  {recipe.shortDescription}
-                </p>
+              <div key={recipe._id}>
+                <Image
+                  alt={recipe.image.alt}
+                  className={cn('w-full h-42 aspect-video object-cover')}
+                  height='200'
+                  src={recipe.image.image}
+                  width='300'
+                />
+                <div className={cn('space-y-2 p-4')}>
+                  <h3 className={cn('text-xl font-bold')}>{recipe.name}</h3>
+                  <p className={cn('text-foreground/60')}>
+                    {recipe.shortDescription}
+                  </p>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
