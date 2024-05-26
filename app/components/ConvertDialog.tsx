@@ -33,9 +33,13 @@ export default function ConvertDrawer() {
     'desiliter-grams': 85,
     'grams-cups': 0.0049604,
     'grams-desiliter': 0.0117647,
+    'ounces-grams': 28.3495,
+    'grams-ounces': 0.035274,
+    'ounces-desiliter': 0.118294,
+    'desiliter-ounces': 8.45351,
   };
 
-  const units = ['pounds', 'kilograms', 'grams', 'cups', 'desiliter'];
+  const units = ['pounds', 'kilograms', 'grams', 'cups', 'desiliter', 'ounces'];
 
   const validToUnits = units.filter(
     (unit) => conversionFactors[`${fromUnit}-${unit}`]
@@ -74,7 +78,7 @@ export default function ConvertDrawer() {
               className={cn('flex flex-col gap-4')}
               onSubmit={handleConvert}
             >
-              <div className={cn('flex gap-2')}>
+              <div className={cn('flex gap-2 justify-between')}>
                 <input
                   className={cn(
                     'text-base flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50'
@@ -124,10 +128,12 @@ export default function ConvertDrawer() {
               )}
             </div>
           </div>
-          <DialogClose>
-            <Button variant='outline' className={cn('mt-4')}>
-              Close
-            </Button>
+          <DialogClose
+            className={cn(
+              'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 mt-4'
+            )}
+          >
+            Close
           </DialogClose>
         </div>
       </DialogContent>
