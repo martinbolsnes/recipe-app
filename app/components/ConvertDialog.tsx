@@ -1,19 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from '@/components/ui/drawer';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { WeightIcon } from 'lucide-react';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogHeader,
+  DialogTrigger,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog';
 
 export default function ConvertDrawer() {
   const [value, setValue] = useState('');
@@ -49,11 +48,11 @@ export default function ConvertDrawer() {
     setConvertedValue((numericValue * conversionFactor).toString());
   };
   return (
-    <Drawer>
-      <DrawerTrigger asChild>
+    <Dialog>
+      <DialogTrigger asChild>
         <Button
           className={cn(
-            'fixed bottom-6 right-6 rounded-full bg-neutral-900 text-neutral-50 dark:bg-neutral-50 dark:text-neutral-900 shadow-lg'
+            'fixed bottom-6 right-6 rounded-full bg-neutral-900 text-neutral-50 shadow-lg'
           )}
           size='icon'
           variant='outline'
@@ -61,15 +60,15 @@ export default function ConvertDrawer() {
           <WeightIcon className={cn('h-5 w-5')} />
           <span className={cn('sr-only')}>Convert units</span>
         </Button>
-      </DrawerTrigger>
-      <DrawerContent>
-        <div className={cn('mx-auto w-full max-w-sm')}>
-          <DrawerHeader>
-            <DrawerTitle>Convert units</DrawerTitle>
-            <DrawerDescription>
-              Convert the units of this recipe to suit your needs.
-            </DrawerDescription>
-          </DrawerHeader>
+      </DialogTrigger>
+      <DialogContent>
+        <div className={cn('mx-auto w-full max-w-sm text-center')}>
+          <DialogHeader>
+            <DialogTitle>Unit Helper</DialogTitle>
+            <DialogDescription>
+              Convert the units from this recipe.
+            </DialogDescription>
+          </DialogHeader>
           <div className={cn('flex flex-col gap-6 p-4 pb-0')}>
             <form
               className={cn('flex flex-col gap-4')}
@@ -78,7 +77,7 @@ export default function ConvertDrawer() {
               <div className={cn('flex gap-2')}>
                 <input
                   className={cn(
-                    'taxt-base flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50'
+                    'text-base flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50'
                   )}
                   type='number'
                   value={value}
@@ -125,13 +124,13 @@ export default function ConvertDrawer() {
               )}
             </div>
           </div>
-          <DrawerFooter>
-            <DrawerClose asChild>
-              <Button variant='outline'>Close</Button>
-            </DrawerClose>
-          </DrawerFooter>
+          <DialogClose>
+            <Button variant='outline' className={cn('mt-4')}>
+              Close
+            </Button>
+          </DialogClose>
         </div>
-      </DrawerContent>
-    </Drawer>
+      </DialogContent>
+    </Dialog>
   );
 }
