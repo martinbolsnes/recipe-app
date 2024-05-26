@@ -2,8 +2,20 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
+import { auth } from '@/auth';
 
-export default function LandingPage() {
+import { getHero, getRecipe } from '@/sanity/sanity.query';
+import type { HeroContentType, RecipeType } from '@/types';
+
+export default async function LandingPage() {
+  const hero: HeroContentType[] = await getHero();
+  const featuredRecipes: RecipeType[] = await getRecipe();
+  const session = await auth();
+
+  const featured = featuredRecipes
+    .filter((recipe) => recipe.featured)
+    .slice(0, 3);
+
   return (
     <>
       <section className={cn('w-full py-12 md:py-24 lg:py-32')}>
@@ -14,22 +26,22 @@ export default function LandingPage() {
             )}
           >
             <div className={cn('flex flex-col justify-center space-y-4')}>
-              <div className={cn('space-y-2')}>
+              <div className={cn('space-y-4')}>
                 <h1
                   className={cn(
                     'text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none'
                   )}
                 >
-                  Delicious Recipes at Your Fingertips
+                  {hero[0].name}
                 </h1>
-                <p className={cn('max-w-[600px] text-neutral-500 md:text-xl')}>
-                  Discover a world of culinary delights with our recipe app.
-                  Explore a vast collection of mouthwatering dishes, from
-                  classic favorites to innovative creations.
+                <p
+                  className={cn('max-w-[600px] text-foreground/60 md:text-xl')}
+                >
+                  {hero[0].description}
                 </p>
               </div>
               <div className={cn('flex flex-col gap-2 min-[400px]:flex-row')}>
-                <Link href='/login'>
+                <Link href={session ? '/recipes' : '/login'}>
                   <Button variant='default' size='lg'>
                     Get Started
                   </Button>
@@ -43,18 +55,20 @@ export default function LandingPage() {
               </div>
             </div>
             <Image
-              alt='Hero'
+              priority
+              alt={hero[0].image.alt}
               className={cn(
                 'mx-auto aspect-square overflow-hidden rounded-xl object-cover sm:w-full lg:order-last'
               )}
-              height='550'
-              src='/placeholder.svg'
-              width='550'
+              height='450'
+              src={hero[0].image.image || '/images/placeholder.jpg'}
+              width='500'
+              style={{ aspectRatio: '500/450', objectFit: 'cover' }}
             />
           </div>
         </div>
       </section>
-      <section className={cn('w-full py-12 md:py-24 lg:py-32 bg-neutral-100 ')}>
+      <section className={cn('w-full py-12 md:py-24 lg:py-32 bg-muted')}>
         <div className={cn('container px-4 md:px-6')}>
           <div
             className={cn(
@@ -64,14 +78,14 @@ export default function LandingPage() {
             <div className={cn('space-y-2')}>
               <h2
                 className={cn(
-                  'text-3xl font-bold tracking-tighter sm:text-5xl'
+                  'text-3xl text-foreground font-bold tracking-tighter sm:text-5xl'
                 )}
               >
                 Featured Recipes
               </h2>
               <p
                 className={cn(
-                  'max-w-[900px] text-neutral-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed '
+                  'max-w-[900px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'
                 )}
               >
                 Explore our collection of delicious and easy-to-follow recipes.
@@ -83,70 +97,28 @@ export default function LandingPage() {
               'mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12'
             )}
           >
-            <div
-              className={cn(
-                'flex flex-col justify-between rounded-md bg-white shadow-sm transition-all hover:shadow-md overflow-hidden'
-              )}
-            >
-              <Image
-                alt='Recipe'
-                className={cn('w-full h-42 aspect-video object-cover')}
-                height='200'
-                src='/placeholder.svg'
-                width='300'
-              />
-              <div className={cn('space-y-2 p-4')}>
-                <h3 className={cn('text-xl font-bold')}>
-                  Creamy Mushroom Risotto
-                </h3>
-                <p className={cn('text-neutral-500 ')}>
-                  A rich and creamy risotto made with fresh mushrooms and
-                  parmesan.
-                </p>
+            {featured.map((recipe) => (
+              <div
+                key={recipe._id}
+                className={cn(
+                  'flex flex-col justify-between rounded-md bg-background shadow-sm transition-all hover:shadow-md overflow-hidden cursor-pointer'
+                )}
+              >
+                <Image
+                  alt={recipe.image.alt}
+                  className={cn('w-full h-42 aspect-video object-cover')}
+                  height='200'
+                  src={recipe.image.image}
+                  width='300'
+                />
+                <div className={cn('space-y-2 p-4')}>
+                  <h3 className={cn('text-xl font-bold')}>{recipe.name}</h3>
+                  <p className={cn('text-foreground/60')}>
+                    {recipe.shortDescription}
+                  </p>
+                </div>
               </div>
-            </div>
-            <div
-              className={cn(
-                'flex flex-col justify-between rounded-md bg-white shadow-sm transition-all hover:shadow-md overflow-hidden'
-              )}
-            >
-              <Image
-                alt='Recipe'
-                className={cn('w-full h-42 aspect-video object-cover')}
-                height='200'
-                src='/placeholder.svg'
-                width='300'
-              />
-              <div className={cn('space-y-2 p-4')}>
-                <h3 className={cn('text-xl font-bold')}>
-                  Grilled Salmon with Lemon Dill
-                </h3>
-                <p className={cn('text-neutral-500 ')}>
-                  Tender salmon fillets grilled to perfection and topped with a
-                  bright lemon-dill sauce.
-                </p>
-              </div>
-            </div>
-            <div
-              className={cn(
-                'flex flex-col justify-between rounded-md bg-white shadow-sm transition-all hover:shadow-md overflow-hidden'
-              )}
-            >
-              <Image
-                alt='Recipe'
-                className={cn('w-full h-42 aspect-video object-cover')}
-                height='200'
-                src='/placeholder.svg'
-                width='300'
-              />
-              <div className={cn('space-y-2 p-4')}>
-                <h3 className={cn('text-xl font-bold')}>Vegetable Stir-Fry</h3>
-                <p className={cn('text-neutral-500 ')}>
-                  A colorful and flavorful stir-fry packed with fresh vegetables
-                  and a savory sauce.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -167,7 +139,7 @@ export default function LandingPage() {
               </h2>
               <p
                 className={cn(
-                  'max-w-[900px] text-neutral-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed '
+                  'max-w-[900px] text-foreground/60 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed '
                 )}
               >
                 Hear from our satisfied customers about their experience with
@@ -181,7 +153,7 @@ export default function LandingPage() {
             >
               <div
                 className={cn(
-                  'flex flex-col justify-between rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md '
+                  'flex flex-col justify-between rounded-xl bg-background p-4 shadow-sm transition-all hover:shadow-md'
                 )}
               >
                 <blockquote
@@ -195,14 +167,14 @@ export default function LandingPage() {
                 </blockquote>
                 <div className={cn('pt-4')}>
                   <div className={cn('font-semibold')}>Emily Johnson</div>
-                  <div className={cn('text-sm text-neutral-500 ')}>
+                  <div className={cn('text-sm text-foreground/60')}>
                     Home Cook
                   </div>
                 </div>
               </div>
               <div
                 className={cn(
-                  'flex flex-col justify-between rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md '
+                  'flex flex-col justify-between rounded-xl bg-background p-4 shadow-sm transition-all hover:shadow-md '
                 )}
               >
                 <blockquote
@@ -216,16 +188,14 @@ export default function LandingPage() {
                 </blockquote>
                 <div className={cn('pt-4')}>
                   <div className={cn('font-semibold')}>Michael Chen</div>
-                  <div
-                    className={cn('text-sm text-gray-500 dark:text-gray-400')}
-                  >
+                  <div className={cn('text-sm text-foreground/60')}>
                     Busy Professional
                   </div>
                 </div>
               </div>
               <div
                 className={cn(
-                  'flex flex-col justify-between rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md '
+                  'flex flex-col justify-between rounded-xl bg-background p-4 shadow-sm transition-all hover:shadow-md'
                 )}
               >
                 <blockquote
@@ -239,7 +209,7 @@ export default function LandingPage() {
                 </blockquote>
                 <div className={cn('pt-4')}>
                   <div className={cn('font-semibold')}>Sarah Lee</div>
-                  <div className={cn('text-sm text-neutral-500 ')}>
+                  <div className={cn('text-sm text-foreground/60')}>
                     Aspiring Chef
                   </div>
                 </div>
