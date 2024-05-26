@@ -12,6 +12,7 @@ export async function getRecipe() {
       category,
       ingredients,
       instructions,
+      featured,
     }`,
     { revalidate: 60 }
   );
@@ -41,5 +42,17 @@ export async function getRecipeBySlug(slug: string) {
       instructions,
     }`,
     { slug, revalidate: 60 }
+  );
+}
+
+export async function getHero() {
+  return client.fetch(
+    groq`*[_type == "hero"]{
+      _id,
+      name,
+      description,
+      image {alt, "image": asset->url},
+    }`,
+    { revalidate: 60 }
   );
 }
