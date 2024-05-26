@@ -4,17 +4,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { auth } from '@/auth';
 
-import { getHero, getRecipe } from '@/sanity/sanity.query';
-import type { HeroContentType, RecipeType } from '@/types';
+import { getHero } from '@/sanity/sanity.query';
+import type { HeroContentType } from '@/types';
+import FeaturedSection from '../components/FeaturedSection';
 
 export default async function LandingPage() {
   const hero: HeroContentType[] = await getHero();
-  const featuredRecipes: RecipeType[] = await getRecipe();
   const session = await auth();
-
-  const featured = featuredRecipes
-    .filter((recipe) => recipe.featured)
-    .slice(0, 3);
 
   return (
     <>
@@ -68,60 +64,7 @@ export default async function LandingPage() {
           </div>
         </div>
       </section>
-      <section className={cn('w-full py-12 md:py-24 lg:py-32 bg-muted')}>
-        <div className={cn('container px-4 md:px-6')}>
-          <div
-            className={cn(
-              'flex flex-col items-center justify-center space-y-4 text-center'
-            )}
-          >
-            <div className={cn('space-y-2')}>
-              <h2
-                className={cn(
-                  'text-3xl text-foreground font-bold tracking-tighter sm:text-5xl'
-                )}
-              >
-                Featured Recipes
-              </h2>
-              <p
-                className={cn(
-                  'max-w-[900px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'
-                )}
-              >
-                Explore our collection of delicious and easy-to-follow recipes.
-              </p>
-            </div>
-          </div>
-          <div
-            className={cn(
-              'mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12'
-            )}
-          >
-            {featured.map((recipe) => (
-              <div
-                key={recipe._id}
-                className={cn(
-                  'flex flex-col justify-between rounded-md bg-background shadow-sm transition-all hover:shadow-md overflow-hidden cursor-pointer'
-                )}
-              >
-                <Image
-                  alt={recipe.image.alt}
-                  className={cn('w-full h-42 aspect-video object-cover')}
-                  height='200'
-                  src={recipe.image.image}
-                  width='300'
-                />
-                <div className={cn('space-y-2 p-4')}>
-                  <h3 className={cn('text-xl font-bold')}>{recipe.name}</h3>
-                  <p className={cn('text-foreground/60')}>
-                    {recipe.shortDescription}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FeaturedSection />
       <section className={cn('w-full py-12 md:py-24 lg:py-32')}>
         <div className={cn('container px-4 md:px-6')}>
           <div
