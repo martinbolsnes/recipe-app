@@ -1,12 +1,13 @@
 import { cn } from '@/lib/utils';
-import { Squircle, StarIcon, WeightIcon } from 'lucide-react';
+import { Squircle, StarIcon } from 'lucide-react';
 import Image from 'next/image';
 import { Metadata } from 'next';
 
 import { getRecipeBySlug } from '@/sanity/sanity.query';
 import type { RecipeType } from '@/types';
-import { Button } from '@/components/ui/button';
-import ConvertDrawer from '@/app/components/ConvertDrawer';
+
+import ConvertDialog from '@/app/components/ConvertDialog';
+import { RecomendedCard } from '@/app/components/RecomendedCard';
 
 type Props = {
   params: {
@@ -104,8 +105,9 @@ export default async function Recipe({ params }: Props) {
               </ol>
             </div>
           </div>
-          <ConvertDrawer />
+          <ConvertDialog />
         </div>
+        <RecomendedCard />
       </div>
     </main>
   );
