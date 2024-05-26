@@ -8,6 +8,7 @@ import type { RecipeType } from '@/types';
 
 import ConvertDialog from '@/app/components/ConvertDialog';
 import { RecomendedCard } from '@/app/components/RecomendedCard';
+import Link from 'next/link';
 
 type Props = {
   params: {
@@ -37,20 +38,21 @@ export default async function Recipe({ params }: Props) {
     <main className={cn('container mx-auto py-8 px-4 md:px-6')}>
       <div
         className={cn(
-          'grid md:grid-cols-2 gap-6 lg:gap-12 items-start max-w-6xl px-4 mx-auto py-6'
+          'flex flex-col gap-6 lg:gap-12 items-start max-w-6xl px-4 mx-auto py-6'
         )}
       >
         <div className={cn('grid gap-6')}>
           <Image
+            priority
             alt={recipe[0].image?.alt}
             className={cn('rounded-lg object-cover w-full')}
-            height='600'
+            height='300'
             src={recipe[0].image?.image || '/images/placeholder.jpg'}
             style={{
-              aspectRatio: '800/600',
+              aspectRatio: '500/300',
               objectFit: 'cover',
             }}
-            width='800'
+            width='500'
           />
           <div className={cn('grid gap-4')}>
             <h1 className={cn('text-3xl font-bold')}>
