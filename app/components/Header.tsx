@@ -5,29 +5,29 @@ import { Menu, PartyPopper, Plus, Utensils } from 'lucide-react';
 import Link from 'next/link';
 import {
   Sheet,
-  SheetClose,
   SheetContent,
-  SheetDescription,
   SheetFooter,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
 
 import UserAvatar from './UseAvatar';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 export const Header = async () => {
   const session = await auth();
   return (
     <header
       className={cn(
-        'bg-white shadow-md px-4 md:px-6 py-4 flex items-center justify-between sticky top-0 z-10'
+        'bg-background shadow-md px-4 md:px-6 py-4 flex items-center justify-between sticky top-0 z-10'
       )}
     >
       <div>
@@ -38,20 +38,32 @@ export const Header = async () => {
       </div>
       <div className={cn('flex items-center gap-4')}>
         {session?.user ? (
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                className={cn(
+                  'focus:outline-none outline-none hover:outline-primary rounded-full'
+                )}
+              >
                 <UserAvatar />
-              </TooltipTrigger>
-              <TooltipContent>
-                <div className={cn('flex flex-col gap-4')}>
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className={cn('w-56')}>
+              <DropdownMenuLabel>Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
                   <Link href='/'>Profile</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
                   <Link href='/'>Settings</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
                   <Link href='/logout'>Logout</Link>
-                </div>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
         ) : (
           <Link href='/login'>
             <Button size='sm' variant='outline'>
