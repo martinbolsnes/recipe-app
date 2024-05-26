@@ -16,4 +16,14 @@ export type RecipeType = {
   category: CategoryType[];
   ingredients: string[];
   instructions: string[];
+  featured: boolean;
+};
+
+export type HeroContentType = {
+  name: string;
+  description: string;
+  image: {
+    alt: string;
+    image: string;
+  };
 };

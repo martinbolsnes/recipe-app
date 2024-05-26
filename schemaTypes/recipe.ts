@@ -60,6 +60,13 @@ const recipe = {
       type: 'array',
       of: [{ type: 'string' }],
     },
+    {
+      name: 'featured',
+      title: 'Featured',
+      type: 'boolean',
+      defaultValue: false,
+      description: 'Is this recipe featured?',
+    },
   ],
 };
 
