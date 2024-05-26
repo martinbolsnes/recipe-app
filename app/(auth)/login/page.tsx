@@ -1,11 +1,26 @@
-import { Github, UtensilsIcon } from 'lucide-react';
+import { ArrowLeftIcon, Github, UtensilsIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { signIn } from '@/auth';
+import Link from 'next/link';
 
 export default function LoginPage() {
   return (
-    <div className={cn('mx-auto max-w-md space-y-6 py-12')}>
+    <main
+      className={cn(
+        'mx-auto max-w-md space-y-6 py-12 h-screen flex flex-col items-center justify-center'
+      )}
+    >
+      <Link href='/'>
+        <Button
+          variant='outline'
+          className={cn('text-base absolute top-8 left-6')}
+        >
+          <ArrowLeftIcon className={cn('w-4 h-4 mr-2')} />
+          Go back
+        </Button>
+      </Link>
+
       <div className={cn('space-y-2 text-center')}>
         <h1
           className={cn('text-3xl font-bold flex items-center justify-center')}
@@ -21,7 +36,7 @@ export default function LoginPage() {
         <form
           action={async () => {
             'use server';
-            await signIn('github', { redirectTo: '/' });
+            await signIn('github', { redirectTo: '/recipes' });
           }}
         >
           <Button variant='default' type='submit'>
@@ -63,6 +78,6 @@ export default function LoginPage() {
                 </Link>
             </div> */}
       </div>
-    </div>
+    </main>
   );
 }
