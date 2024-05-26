@@ -8,7 +8,6 @@ import type { RecipeType } from '@/types';
 
 import ConvertDialog from '@/app/components/ConvertDialog';
 import { RecomendedCard } from '@/app/components/RecomendedCard';
-import Link from 'next/link';
 
 type Props = {
   params: {
