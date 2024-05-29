@@ -22,7 +22,6 @@ export default function Page({
         <div className={cn('flex items-center justify-between mb-4')}>
           <div className={cn('flex items-center gap-4')}>
             <SearchInput placeholder='Search recipe...' />
-            <DropdownMenuComponent />
           </div>
         </div>
         <section className={cn('mb-8')}>
