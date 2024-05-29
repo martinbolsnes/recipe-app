@@ -54,11 +54,11 @@ export async function Card({
               width={400}
             />
             <Button
-              className='absolute top-2 right-2 bg-background rounded-full'
+              className='absolute top-2 right-2 bg-foreground/40 rounded-full'
               size='icon'
-              variant='outline'
+              variant='secondary'
             >
-              <HeartIcon className='w-5 h-5  stroke-rose-600 stroke-1 fill-rose-400' />
+              <HeartIcon className='w-5 h-5  stroke-rose-400 stroke-1 fill-rose-400' />
             </Button>
           </div>
           <div className={cn('p-4')}>
