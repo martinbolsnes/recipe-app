@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Heart } from 'lucide-react';
+import { Heart, HeartIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -15,6 +15,7 @@ export default async function Card({
   currentPage: number;
 }) {
   const recipes: RecipeType[] = await getRecipe();
+  console.log(recipes);
 
   const filteredRecipes = recipes.filter((recipe) => {
     const name =
@@ -35,39 +36,51 @@ export default async function Card({
   return (
     <>
       {filteredRecipes.map((recipes) => (
-        <div
+        <Link
+          href={`/recipes/${recipes.slug}`}
           key={recipes._id}
-          className={cn('bg-white rounded-md shadow-md overflow-hidden')}
+          className={cn(
+            'bg-white rounded-md shadow-md transition-all hover:shadow-lg overflow-hidden'
+          )}
         >
-          <Image
-            alt={recipes.image?.alt}
-            className={cn('w-full h-48 object-cover')}
-            height={250}
-            src={recipes.image?.image}
-            style={{
-              aspectRatio: '400/250',
-              objectFit: 'cover',
-            }}
-            width={400}
-          />
+          <div className={cn('relative')}>
+            <Image
+              alt={recipes.image?.alt}
+              className={cn('w-full h-48 object-cover')}
+              height={250}
+              src={recipes.image?.image}
+              style={{
+                aspectRatio: '400/250',
+                objectFit: 'cover',
+              }}
+              width={400}
+            />
+            <Button
+              className='absolute top-2 right-2 bg-background rounded-full'
+              size='icon'
+              variant='outline'
+            >
+              <HeartIcon className='w-5 h-5  stroke-neutral-600 stroke-1' />
+            </Button>
+          </div>
           <div className={cn('p-4')}>
             <h3 className={cn('text-lg font-bold mb-2')}>{recipes.name}</h3>
             <p className={cn('text-neutral-500 mb-4')}>
               {recipes.shortDescription}
             </p>
-            <div className={cn('flex items-center justify-between')}>
-              <Button size='sm' variant='outline'>
-                <Heart className={cn('w-4 h-4 mr-2')} />
-                Save
-              </Button>
-              <Link href={`/recipes/${recipes.slug}`}>
-                <Button size='sm' variant='default'>
-                  View Recipe
-                </Button>
-              </Link>
+            <div className='flex flex-wrap gap-2'>
+              <div className='bg-yellow-400 px-3 py-2 rounded-sm text-sm font-bold text-foreground'>
+                Fast
+              </div>
+              <div className='bg-green-400 px-3 py-2 rounded-sm text-sm font-bold text-foreground'>
+                Healthy
+              </div>
+              <div className='bg-rose-400 px-3 py-2 rounded-sm text-sm font-bold text-foreground'>
+                New
+              </div>
             </div>
           </div>
-        </div>
+        </Link>
       ))}
     </>
   );
