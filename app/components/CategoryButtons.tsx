@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { Beef, Fish, Salad, Wheat } from 'lucide-react';
+import { Beef, CakeSlice, Fish, Martini, Salad, Wheat } from 'lucide-react';
 
 import { getCategories } from '@/sanity/sanity.query';
 import type { CategoryType } from '@/types';
@@ -10,6 +10,8 @@ const icons = {
   fish: <Fish className={cn('w-4 h-4 mr-2')} />,
   veggie: <Salad className={cn('w-4 h-4 mr-2')} />,
   pasta: <Wheat className={cn('w-4 h-4 mr-2')} />,
+  dessert: <CakeSlice className={cn('w-4 h-4 mr-2')} />,
+  drinks: <Martini className={cn('w-4 h-4 mr-2')} />,
 };
 
 export const CategoryButtons = async () => {
