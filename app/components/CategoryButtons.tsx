@@ -19,7 +19,11 @@ export const CategoryButtons = async () => {
   const categories: CategoryType[] = await getCategories();
   return (
     <div className={cn('flex flex-wrap items-center gap-4')}>
-      <Button size='sm' variant='outline'>
+      <Button
+        size='sm'
+        variant='outline'
+        className='bg-primary text-background'
+      >
         All
       </Button>
       {categories.map((category) => (
