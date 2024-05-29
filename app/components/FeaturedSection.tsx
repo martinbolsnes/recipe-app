@@ -62,7 +62,7 @@ export default async function FeaturedSection() {
                   size='icon'
                   variant='outline'
                 >
-                  <HeartIcon className='w-5 h-5  stroke-neutral-600 stroke-1' />
+                  <HeartIcon className='w-5 h-5  stroke-rose-600 stroke-1 fill-rose-400' />
                 </Button>
               </div>
               <div className={cn('space-y-2 p-4')}>
@@ -71,7 +71,7 @@ export default async function FeaturedSection() {
                   {recipe.shortDescription}
                 </p>
                 <div className='flex flex-wrap gap-2'>
-                  <div className='bg-rose-400 px-3 py-2 rounded-sm text-sm font-bold text-foreground'>
+                  <div className='bg-amber-100 px-2 py-1 rounded-sm text-sm font-semibold text-amber-600'>
                     New
                   </div>
                 </div>
