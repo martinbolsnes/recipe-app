@@ -8,6 +8,7 @@ import type { RecipeType } from '@/types';
 
 import ConvertDialog from '@/app/components/ConvertDialog';
 import { RecomendedCard } from '@/app/components/RecomendedCard';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 type Props = {
   params: {
@@ -44,7 +45,7 @@ export default async function Recipe({ params }: Props) {
           <Image
             priority
             alt={recipe[0].image?.alt}
-            className={cn('rounded-lg object-cover w-full')}
+            className={cn('rounded-lg object-cover w-full max-w-[800px]')}
             height='300'
             src={recipe[0].image?.image || '/images/placeholder.jpg'}
             style={{
@@ -78,33 +79,41 @@ export default async function Recipe({ params }: Props) {
                 (4.2 / 5)
               </span>
             </div>
-            <div className={cn('grid gap-2')}>
-              <h2 className={cn('text-xl font-semibold')}>Ingredients</h2>
-
-              <ul className={cn('grid gap-1 text-sm')}>
-                {recipe[0].ingredients.map((ingredient, index) => (
-                  <li key={index}>
-                    <Squircle
-                      className={cn('w-4 h-4 mr-2 inline-block text-primary')}
-                    />
-                    {ingredient}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className={cn('grid gap-2')}>
-              <h2 className={cn('text-xl font-semibold')}>Instructions</h2>
-              <ol className={cn('grid gap-2 text-sm')}>
-                {recipe[0].instructions.map((instruction, index) => (
-                  <li key={index}>
-                    <Squircle
-                      className={cn('w-4 h-4 mr-2 inline-block text-primary')}
-                    />
-                    {instruction}
-                  </li>
-                ))}
-              </ol>
-            </div>
+            <Tabs
+              className={cn('w-full max-w-[800px]')}
+              defaultValue='ingredients'
+            >
+              <TabsList className='grid w-full grid-cols-2 border-b border-neutral-200'>
+                <TabsTrigger value='ingredients'>Ingredients</TabsTrigger>
+                <TabsTrigger value='instructions'>Instructions</TabsTrigger>
+              </TabsList>
+              <TabsContent className='py-6' value='ingredients'>
+                <div className='grid gap-2'>
+                  <h2 className='text-xl font-semibold'>Ingredients</h2>
+                  <ul className='grid gap-1 text-sm pl-6'>
+                    {recipe[0].ingredients.map((ingredient, index) => (
+                      <li key={index}>
+                        <Squircle className='w-4 h-4 mr-2 inline-block text-primary' />
+                        {ingredient}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </TabsContent>
+              <TabsContent className='py-6' value='instructions'>
+                <div className='grid gap-2'>
+                  <h2 className='text-xl font-semibold'>Instructions</h2>
+                  <ol className='grid gap-2 text-sm pl-6'>
+                    {recipe[0].instructions.map((instruction, index) => (
+                      <li key={index}>
+                        <Squircle className='w-4 h-4 mr-2 inline-block text-primary' />
+                        {instruction}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
           <ConvertDialog />
         </div>
