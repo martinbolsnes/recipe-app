@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { getRecipe } from '@/sanity/sanity.query';
 import type { RecipeType } from '@/types';
 
-export default async function Card({
+export async function Card({
   query,
   currentPage,
 }: {
@@ -15,7 +15,6 @@ export default async function Card({
   currentPage: number;
 }) {
   const recipes: RecipeType[] = await getRecipe();
-  console.log(recipes);
 
   const filteredRecipes = recipes.filter((recipe) => {
     const name =
@@ -26,10 +25,9 @@ export default async function Card({
       recipe.shortDescription && typeof recipe.shortDescription === 'string'
         ? recipe.shortDescription.toLowerCase()
         : '';
-
     return (
-      name.includes(query?.toLowerCase() || '') ||
-      shortDescription.includes(query?.toLowerCase() || '')
+      name.includes(query.toLowerCase()) ||
+      shortDescription.includes(query.toLowerCase())
     );
   });
 
@@ -40,7 +38,7 @@ export default async function Card({
           href={`/recipes/${recipes.slug}`}
           key={recipes._id}
           className={cn(
-            'bg-white rounded-md shadow-md transition-all hover:shadow-lg overflow-hidden'
+            'bg-background rounded-md shadow-md transition-all hover:shadow-lg overflow-hidden'
           )}
         >
           <div className={cn('relative')}>
@@ -60,7 +58,7 @@ export default async function Card({
               size='icon'
               variant='outline'
             >
-              <HeartIcon className='w-5 h-5  stroke-neutral-600 stroke-1' />
+              <HeartIcon className='w-5 h-5  stroke-rose-600 stroke-1 fill-rose-400' />
             </Button>
           </div>
           <div className={cn('p-4')}>
@@ -69,13 +67,13 @@ export default async function Card({
               {recipes.shortDescription}
             </p>
             <div className='flex flex-wrap gap-2'>
-              <div className='bg-yellow-400 px-3 py-2 rounded-sm text-sm font-bold text-foreground'>
+              <div className='bg-fuchsia-100 px-2 py-1 rounded-sm font-semibold text-sm text-fuchsia-900'>
                 Fast
               </div>
-              <div className='bg-green-400 px-3 py-2 rounded-sm text-sm font-bold text-foreground'>
+              <div className='bg-emerald-100 px-2 py-1 rounded-sm text-sm font-semibold text-emerald-900 '>
                 Healthy
               </div>
-              <div className='bg-rose-400 px-3 py-2 rounded-sm text-sm font-bold text-foreground'>
+              <div className='bg-amber-100 px-2 py-1 rounded-sm text-sm font-semibold text-amber-900 '>
                 New
               </div>
             </div>
