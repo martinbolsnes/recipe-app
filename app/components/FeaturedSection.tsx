@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { getRecipe } from '@/sanity/sanity.query';
 import type { RecipeType } from '@/types';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { HeartIcon } from 'lucide-react';
 
 export default async function FeaturedSection() {
   const featuredRecipes: RecipeType[] = await getRecipe();
@@ -47,7 +49,7 @@ export default async function FeaturedSection() {
                 'flex flex-col justify-between rounded-md bg-background shadow-sm transition-all hover:shadow-md overflow-hidden cursor-pointer'
               )}
             >
-              <div key={recipe._id}>
+              <div className={cn('relative')}>
                 <Image
                   alt={recipe.image.alt}
                   className={cn('w-full h-42 aspect-video object-cover')}
@@ -55,11 +57,23 @@ export default async function FeaturedSection() {
                   src={recipe.image.image}
                   width='300'
                 />
-                <div className={cn('space-y-2 p-4')}>
-                  <h3 className={cn('text-xl font-bold')}>{recipe.name}</h3>
-                  <p className={cn('text-foreground/60')}>
-                    {recipe.shortDescription}
-                  </p>
+                <Button
+                  className='absolute top-2 right-2 bg-background rounded-full'
+                  size='icon'
+                  variant='outline'
+                >
+                  <HeartIcon className='w-5 h-5  stroke-neutral-600 stroke-1' />
+                </Button>
+              </div>
+              <div className={cn('space-y-2 p-4')}>
+                <h3 className={cn('text-xl font-bold')}>{recipe.name}</h3>
+                <p className={cn('text-foreground/60')}>
+                  {recipe.shortDescription}
+                </p>
+                <div className='flex flex-wrap gap-2'>
+                  <div className='bg-rose-400 px-3 py-2 rounded-sm text-sm font-bold text-foreground'>
+                    New
+                  </div>
                 </div>
               </div>
             </Link>
