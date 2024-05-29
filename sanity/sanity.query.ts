@@ -9,7 +9,7 @@ export async function getRecipe() {
       "slug": slug.current,
       shortDescription,
       image {alt, "image": asset->url},
-      category,
+      "categories": categories[]->,
       ingredients,
       instructions,
       featured,

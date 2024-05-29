@@ -13,7 +13,7 @@ export type RecipeType = {
     alt: string;
     image: string;
   };
-  category: CategoryType[];
+  categories: CategoryType[];
   ingredients: string[];
   instructions: string[];
   featured: boolean;
