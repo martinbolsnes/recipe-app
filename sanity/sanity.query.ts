@@ -14,7 +14,7 @@ export async function getRecipe() {
       instructions,
       featured,
     }`,
-    { revalidate: 60 }
+    { revalidate: 10 }
   );
 }
 
@@ -25,7 +25,7 @@ export async function getCategories() {
       name,
       icon,
     }`,
-    { revalidate: 60 }
+    { revalidate: 10 }
   );
 }
 
@@ -41,7 +41,7 @@ export async function getRecipeBySlug(slug: string) {
       ingredients,
       instructions,
     }`,
-    { slug, revalidate: 60 }
+    { slug, revalidate: 10 }
   );
 }
 
@@ -53,6 +53,6 @@ export async function getHero() {
       description,
       image {alt, "image": asset->url},
     }`,
-    { revalidate: 60 }
+    { revalidate: 10 }
   );
 }
