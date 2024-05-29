@@ -3,7 +3,7 @@ import { SearchInput } from '../../components/SearchInput';
 import { DropdownMenuComponent } from '../../components/DropdownMenu';
 import { CategoryButtons } from '../../components/CategoryButtons';
 import { Suspense } from 'react';
-import Card from '../../components/Card';
+import { Card } from '../../components/Card';
 
 export default function Page({
   searchParams,
