@@ -1,7 +1,7 @@
 import { ArrowLeftIcon, Github, UtensilsIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { signIn } from '@/auth';
+import { signIn } from '@/app/utils/auth';
 import Link from 'next/link';
 
 export default function LoginPage() {
