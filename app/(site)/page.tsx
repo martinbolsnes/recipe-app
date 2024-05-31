@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
-import { auth } from '@/auth';
+import { auth } from '@/app/utils/auth';
 
 import { getHero } from '@/sanity/sanity.query';
 import type { HeroContentType } from '@/types';
