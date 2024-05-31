@@ -1,4 +1,4 @@
-import { auth } from '../../auth';
+import { auth } from '../utils/auth';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
