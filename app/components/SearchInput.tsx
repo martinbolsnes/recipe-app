@@ -9,7 +9,8 @@ export const SearchInput = ({ placeholder }: { placeholder: string }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
-  function handleSearch(term: string) {
+
+  const handleSearch = (term: string) => {
     const params = new URLSearchParams(searchParams);
     if (term) {
       params.set('query', term);
@@ -17,7 +18,8 @@ export const SearchInput = ({ placeholder }: { placeholder: string }) => {
       params.delete('query');
     }
     replace(`${pathname}?${params.toString()}`);
-  }
+  };
+
   return (
     <div className={cn('relative w-full max-w-md')}>
       <Search
@@ -31,10 +33,8 @@ export const SearchInput = ({ placeholder }: { placeholder: string }) => {
         )}
         placeholder={placeholder}
         type='search'
-        onChange={(e) => {
-          handleSearch(e.target.value);
-        }}
-        defaultValue={searchParams.get('query')?.toString()}
+        onChange={(e) => handleSearch(e.target.value)}
+        defaultValue={searchParams.get('query') || ''}
       />
     </div>
   );
