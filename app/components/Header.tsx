@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { auth } from '../../auth';
+import { auth } from '../utils/auth';
 import { Menu, PartyPopper, Plus, Utensils } from 'lucide-react';
 import Link from 'next/link';
 import {
