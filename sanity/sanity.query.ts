@@ -9,7 +9,7 @@ export async function getRecipe() {
       "slug": slug.current,
       shortDescription,
       image {alt, "image": asset->url},
-      "categories": categories[]->,
+      "categories": categories[]->{_id, name, icon},
       ingredients,
       instructions,
       featured,
@@ -26,6 +26,19 @@ export async function getCategories() {
       icon,
     }`,
     { revalidate: 10 }
+  );
+}
+
+export async function getRecipesByCategory(categoryName: string) {
+  return client.fetch(
+    groq`*[_type == "recipe" && categories[].name match $categoryName]{
+      _id,
+      name,
+      "slug": slug.current,
+      shortDescription,
+      // ... other fields
+    }`,
+    { categoryName }
   );
 }
 
