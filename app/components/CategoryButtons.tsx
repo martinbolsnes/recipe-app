@@ -3,24 +3,32 @@
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-import { Beef, CakeSlice, Fish, Martini, Salad, Wheat } from 'lucide-react';
+import {
+  Beef,
+  CakeSlice,
+  Fish,
+  ListPlus,
+  Martini,
+  Salad,
+  Wheat,
+} from 'lucide-react';
 import { getCategories } from '@/sanity/sanity.query';
 import type { CategoryType } from '@/types';
 import { useEffect, useState } from 'react';
 
 const icons = {
-  meat: <Beef className={cn('w-4 h-4 mr-2')} />,
-  fish: <Fish className={cn('w-4 h-4 mr-2')} />,
-  veggie: <Salad className={cn('w-4 h-4 mr-2')} />,
+  kjøtt: <Beef className={cn('w-4 h-4 mr-2')} />,
+  fisk: <Fish className={cn('w-4 h-4 mr-2')} />,
+  vegetar: <Salad className={cn('w-4 h-4 mr-2')} />,
   pasta: <Wheat className={cn('w-4 h-4 mr-2')} />,
   dessert: <CakeSlice className={cn('w-4 h-4 mr-2')} />,
-  drinks: <Martini className={cn('w-4 h-4 mr-2')} />,
-  all: <CakeSlice className={cn('w-4 h-4 mr-2')} />,
+  drinker: <Martini className={cn('w-4 h-4 mr-2')} />,
+  alle: <ListPlus className={cn('w-4 h-4 mr-2')} />,
 };
 
 export default function CategoryButtons() {
   const [categories, setCategories] = useState<CategoryType[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>('alle');
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -37,7 +45,7 @@ export default function CategoryButtons() {
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
     const params = new URLSearchParams(searchParams);
-    if (category !== 'all') {
+    if (category !== 'alle') {
       params.set('category', category);
     } else {
       params.delete('category');
@@ -49,11 +57,11 @@ export default function CategoryButtons() {
     <div className={cn('flex flex-wrap items-center gap-4')}>
       <Button
         size='sm'
-        variant={selectedCategory === 'all' ? 'default' : 'outline'}
-        onClick={() => handleCategoryClick('all')}
+        variant={selectedCategory === 'alle' ? 'default' : 'outline'}
+        onClick={() => handleCategoryClick('alle')}
       >
-        {icons.all}
-        All
+        {icons.alle}
+        Alle
       </Button>
 
       {categories.map((category) => {
