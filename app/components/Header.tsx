@@ -11,7 +11,6 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 
-import UserAvatar from './UseAvatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
