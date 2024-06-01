@@ -25,39 +25,19 @@ export default function SignInPage() {
         <h1
           className={cn('text-3xl font-bold flex items-center justify-center')}
         >
-          <UtensilsIcon className={cn('mr-2 h-6 w-6')} />
+          <UtensilsIcon className={cn('mr-2 h-6 w-6 text-primary')} />
           MunchMate
         </h1>
-        <p className={cn('text-neutral-500 dark:text-neutral-400')}>
-          Log in to get started.
-        </p>
       </div>
       <div className={cn('flex flex-col gap-4 items-center')}>
-        <SignIn />
-
-        {/* <div className={cn("space-y-2")}>
-                <Label htmlFor={cn("email")}>Email</Label>
-                <Input id={cn("email")} placeholder={cn("m@example.com")} required type={cn("email")} />
-            </div>
-            <div className={cn("space-y-2")}>
-                <Label htmlFor={cn("password")}>Password</Label>
-                <Input id={cn("password")} required type={cn("password")} />
-            </div>
-            <Button className={cn("w-full")} type={cn("submit")}>
-                Sign Up
-            </Button>
-            <div className={cn("text-center text-sm text-gray-500 dark:text-gray-400")}>
-                Already have an account?
-                <Link className={cn("font-medium underline underline-offset-4")} href={cn("#")}>
-                    Log in
-                </Link>
-            </div>
-            <div className={cn("text-center text-sm text-gray-500 dark:text-gray-400")}>
-                Forgot your password?
-                <Link className={cn("font-medium underline underline-offset-4")} href={cn("#")}>
-                    Reset it
-                </Link>
-            </div> */}
+        <SignIn
+          appearance={{
+            elements: {
+              formButtonPrimary:
+                'inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-10 rounded-md px-8',
+            },
+          }}
+        />
       </div>
     </main>
   );

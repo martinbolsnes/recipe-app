@@ -27,24 +27,19 @@ export default function SignUpPage() {
               'text-3xl font-bold flex items-center justify-center'
             )}
           >
-            <UtensilsIcon className={cn('mr-2 h-6 w-6')} />
+            <UtensilsIcon className={cn('mr-2 h-6 w-6 text-primary')} />
             MunchMate
           </h1>
         </div>
         <div className={cn('flex flex-col gap-4 items-center')}>
-          <SignUp />
-          {/* <form
-            action={async () => {
-              'use server';
-              await signOut({ redirectTo: '/', redirect: true });
-              window.location.href = '/';
+          <SignUp
+            appearance={{
+              elements: {
+                formButtonPrimary:
+                  'inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-10 rounded-md px-8',
+              },
             }}
-          >
-            <Button variant='default' type='submit'>
-              <LogOut className={cn('w-4 h-4 mr-2')} />
-              Log out
-            </Button>
-          </form> */}
+          />
         </div>
       </div>
     </main>
