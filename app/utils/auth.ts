@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth';
+/* import NextAuth from 'next-auth';
 import GitHub from 'next-auth/providers/github';
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -7,4 +7,4 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     signIn: '/login',
     signOut: '/logout',
   },
-});
+}); */
