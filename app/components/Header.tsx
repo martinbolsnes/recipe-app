@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { auth } from '../utils/auth';
+import { auth, currentUser } from '@clerk/nextjs/server';
 import { Menu, PartyPopper, Plus, Utensils } from 'lucide-react';
 import Link from 'next/link';
 import {
@@ -21,9 +21,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 
 export const Header = async () => {
-  const session = await auth();
+  const { userId } = auth();
   return (
     <header
       className={cn(
@@ -37,39 +38,14 @@ export const Header = async () => {
         </Link>
       </div>
       <div className={cn('flex items-center gap-4')}>
-        {session?.user ? (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button
-                className={cn(
-                  'focus:outline-none outline-none hover:outline-primary rounded-full'
-                )}
-              >
-                <UserAvatar />
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className={cn('w-56')}>
-              <DropdownMenuLabel>Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuItem>
-                  <Link href='/'>Profile</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href='/'>Settings</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href='/logout'>Logout</Link>
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
+        {userId ? (
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
         ) : (
-          <Link href='/login'>
-            <Button size='sm' variant='outline'>
-              Login
-            </Button>
-          </Link>
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
         )}
         <Sheet>
           <SheetTrigger asChild>
