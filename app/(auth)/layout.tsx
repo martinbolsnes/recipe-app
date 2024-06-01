@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils';
 import { Comfortaa as FontSans } from 'next/font/google';
 import '../globals.css';
+import { ClerkProvider } from '@clerk/nextjs';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -13,15 +14,17 @@ export default function AuthLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body
-        className={cn(
-          'flex items-center justify-center min-h-screen bg-background font-sans antialiased',
-          fontSans.variable
-        )}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang='en'>
+        <body
+          className={cn(
+            'flex items-center justify-center min-h-screen bg-background font-sans antialiased',
+            fontSans.variable
+          )}
+        >
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
