@@ -40,7 +40,7 @@ export default async function AllRecipesPage({
     <main className={cn('container mx-auto py-8 px-4 md:px-6')}>
       <div className={cn('flex items-center justify-between mb-4')}>
         <div className={cn('flex items-center gap-4')}>
-          <SearchInput placeholder='Search recipe...' />
+          <SearchInput placeholder='Søk oppskrifter...' />
         </div>
       </div>
       <section className={cn('mb-8')}>
