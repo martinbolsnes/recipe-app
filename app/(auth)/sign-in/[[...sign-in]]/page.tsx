@@ -1,10 +1,10 @@
 import { ArrowLeftIcon, Github, UtensilsIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { signIn } from '@/app/utils/auth';
 import Link from 'next/link';
+import { SignIn } from '@clerk/nextjs';
 
-export default function LoginPage() {
+export default function SignInPage() {
   return (
     <main
       className={cn(
@@ -33,27 +33,8 @@ export default function LoginPage() {
         </p>
       </div>
       <div className={cn('flex flex-col gap-4 items-center')}>
-        <form
-          action={async () => {
-            'use server';
-            await signIn('github', { redirectTo: '/recipes' });
-          }}
-        >
-          <Button variant='default' type='submit'>
-            <Github className={cn('w-4 h-4 mr-2')} />
-            Login with Github
-          </Button>
-        </form>
-        {/* <form
-          action={async () => {
-            'use server';
-            await signIn('google');
-          }}
-        >
-          <Button variant='secondary' type='submit'>
-            Login with Google
-          </Button>
-        </form> */}
+        <SignIn />
+
         {/* <div className={cn("space-y-2")}>
                 <Label htmlFor={cn("email")}>Email</Label>
                 <Input id={cn("email")} placeholder={cn("m@example.com")} required type={cn("email")} />

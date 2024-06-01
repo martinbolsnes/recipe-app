@@ -1,10 +1,10 @@
 import { ArrowLeftIcon, LogOut, UtensilsIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { signOut } from '@/app/utils/auth';
 import Link from 'next/link';
+import { SignUp } from '@clerk/nextjs';
 
-export default function LogoutPage() {
+export default function SignUpPage() {
   return (
     <main
       className={cn(
@@ -32,7 +32,8 @@ export default function LogoutPage() {
           </h1>
         </div>
         <div className={cn('flex flex-col gap-4 items-center')}>
-          <form
+          <SignUp />
+          {/* <form
             action={async () => {
               'use server';
               await signOut({ redirectTo: '/', redirect: true });
@@ -43,7 +44,7 @@ export default function LogoutPage() {
               <LogOut className={cn('w-4 h-4 mr-2')} />
               Log out
             </Button>
-          </form>
+          </form> */}
         </div>
       </div>
     </main>
