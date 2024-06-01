@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
-import { auth } from '@/app/utils/auth';
+/* import { auth } from '@/app/utils/auth'; */
 
 import { getHero } from '@/sanity/sanity.query';
 import type { HeroContentType } from '@/types';
@@ -10,7 +10,7 @@ import FeaturedSection from '../components/FeaturedSection';
 
 export default async function LandingPage() {
   const hero: HeroContentType[] = await getHero();
-  const session = await auth();
+  /* const session = await auth(); */
 
   return (
     <>
@@ -37,7 +37,7 @@ export default async function LandingPage() {
                 </p>
               </div>
               <div className={cn('flex flex-col gap-2 min-[400px]:flex-row')}>
-                <Link href={session ? '/recipes' : '/login'}>
+                <Link href={'/login'}>
                   <Button variant='default' size='lg'>
                     Get Started
                   </Button>
