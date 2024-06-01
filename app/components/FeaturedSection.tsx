@@ -25,14 +25,15 @@ export default async function FeaturedSection() {
                 'text-3xl text-foreground font-bold tracking-tighter sm:text-5xl'
               )}
             >
-              Featured Recipes
+              Nye oppskrifter
             </h2>
             <p
               className={cn(
                 'max-w-[900px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'
               )}
             >
-              Explore our collection of delicious and easy-to-follow recipes.
+              Få med deg noen av de nyeste oppskriftene som er lagt til på
+              MunchMate
             </p>
           </div>
         </div>
@@ -57,24 +58,24 @@ export default async function FeaturedSection() {
                   src={recipe.image.image}
                   width='300'
                 />
-                <Button
+                {/* <Button
                   className='absolute top-2 right-2 bg-background rounded-full'
                   size='icon'
                   variant='outline'
                 >
                   <HeartIcon className='w-5 h-5  stroke-rose-600 stroke-1 fill-rose-400' />
-                </Button>
+                </Button> */}
               </div>
               <div className={cn('space-y-2 p-4')}>
                 <h3 className={cn('text-xl font-bold')}>{recipe.name}</h3>
                 <p className={cn('text-foreground/60')}>
                   {recipe.shortDescription}
                 </p>
-                <div className='flex flex-wrap gap-2'>
+                {/* <div className='flex flex-wrap gap-2'>
                   <div className='bg-amber-100 px-2 py-1 rounded-sm text-sm font-semibold text-amber-600'>
                     New
                   </div>
-                </div>
+                </div> */}
               </div>
             </Link>
           ))}
