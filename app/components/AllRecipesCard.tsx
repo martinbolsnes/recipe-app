@@ -6,7 +6,7 @@ import { RecipeType } from '@/types';
 export function AllRecipesCard({ recipe }: { recipe: RecipeType }) {
   return (
     <Link
-      href={`/recipes/${(recipe.slug as any).current}`}
+      href={`/recipes/${recipe.slug}`}
       key={recipe._id}
       className={cn(
         'bg-background rounded-md shadow-md transition-all hover:shadow-lg overflow-hidden'
