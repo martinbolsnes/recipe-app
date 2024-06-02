@@ -5,6 +5,8 @@ import { cn } from '@/lib/utils';
 import { getRecipe, getCategories } from '@/sanity/sanity.query';
 import type { RecipeType, CategoryType } from '@/types';
 
+export const revalidate = 0;
+
 export default async function AllRecipesPage({
   searchParams,
 }: {
