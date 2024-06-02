@@ -21,25 +21,25 @@ export default function ConvertDrawer() {
   const [convertedValue, setConvertedValue] = useState('');
 
   const conversionFactors: { [key: string]: number } = {
-    'pounds-kilograms': 0.453592,
-    'pounds-grams': 453.592,
-    'kilograms-pounds': 2.20462,
-    'kilograms-grams': 1000,
-    'grams-pounds': 0.00220462,
-    'grams-kilograms': 0.001,
+    'pounds-kilogram': 0.453592,
+    'pounds-gram': 453.592,
+    'kilogram-pounds': 2.20462,
+    'kilogram-gram': 1000,
+    'gram-pounds': 0.00220462,
+    'gram-kilogram': 0.001,
     'cups-desiliter': 2.36588,
-    'cups-grams': 201.6,
+    'cups-gram': 201.6,
     'desiliter-cups': 0.422675,
-    'desiliter-grams': 85,
-    'grams-cups': 0.0049604,
-    'grams-desiliter': 0.0117647,
-    'ounces-grams': 28.3495,
-    'grams-ounces': 0.035274,
+    'desiliter-gram': 85,
+    'gram-cups': 0.0049604,
+    'gram-desiliter': 0.0117647,
+    'ounces-gram': 28.3495,
+    'gram-ounces': 0.035274,
     'ounces-desiliter': 0.118294,
     'desiliter-ounces': 8.45351,
   };
 
-  const units = ['pounds', 'kilograms', 'grams', 'cups', 'desiliter', 'ounces'];
+  const units = ['pounds', 'kilogram', 'gram', 'cups', 'desiliter', 'ounces'];
 
   const validToUnits = units.filter(
     (unit) => conversionFactors[`${fromUnit}-${unit}`]
@@ -68,9 +68,9 @@ export default function ConvertDrawer() {
       <DialogContent>
         <div className={cn('mx-auto w-full max-w-sm text-center')}>
           <DialogHeader>
-            <DialogTitle>Unit Helper</DialogTitle>
+            <DialogTitle>Måleenhetshjelper</DialogTitle>
             <DialogDescription>
-              Convert the units from this recipe.
+              Konverter mellom ulike måleenheter
             </DialogDescription>
           </DialogHeader>
           <div className={cn('flex flex-col gap-6 p-4 pb-0')}>
@@ -120,7 +120,7 @@ export default function ConvertDrawer() {
                 </select>
               </div>
 
-              <Button type='submit'>Convert</Button>
+              <Button type='submit'>Konverter</Button>
             </form>
             <div className={cn('flex items-center justify-center')}>
               {convertedValue && (
@@ -133,7 +133,7 @@ export default function ConvertDrawer() {
               'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 mt-4'
             )}
           >
-            Close
+            Lukk
           </DialogClose>
         </div>
       </DialogContent>
