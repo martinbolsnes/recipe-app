@@ -92,9 +92,9 @@ export default async function Recipe({ params }: Props) {
                   <h2 className='text-xl font-semibold'>Ingredients</h2>
                   <ul className='grid gap-1 text-sm pl-6'>
                     {recipe[0].ingredients.map((ingredient, index) => (
-                      <li key={index}>
+                      <li key={index} className={cn('flex items-start')}>
                         <Squircle className='w-4 h-4 mr-2 inline-block text-primary' />
-                        {ingredient}
+                        <span className={cn('flex-1')}>{ingredient}</span>
                       </li>
                     ))}
                   </ul>
@@ -105,9 +105,9 @@ export default async function Recipe({ params }: Props) {
                   <h2 className='text-xl font-semibold'>Instructions</h2>
                   <ol className='grid gap-2 text-sm pl-6'>
                     {recipe[0].instructions.map((instruction, index) => (
-                      <li key={index}>
+                      <li key={index} className={cn('flex items-start')}>
                         <Squircle className='w-4 h-4 mr-2 inline-block text-primary' />
-                        {instruction}
+                        <span className={cn('flex-1')}>{instruction}</span>
                       </li>
                     ))}
                   </ol>
