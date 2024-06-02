@@ -14,7 +14,7 @@ export default async function LandingPage() {
   /* const session = await auth(); */
 
   return (
-    <>
+    <main>
       <section className={cn('w-full py-12 md:py-24 lg:py-32 h-screen')}>
         <div className={cn('container px-4 md:px-6')}>
           <div
@@ -75,6 +75,6 @@ export default async function LandingPage() {
         </div>
       </section>
       <FeaturedSection />
-    </>
+    </main>
   );
 }
