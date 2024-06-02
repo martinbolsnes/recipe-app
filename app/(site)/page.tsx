@@ -2,16 +2,16 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
-/* import { auth } from '@/app/utils/auth'; */
 
 import { getHero } from '@/sanity/sanity.query';
 import type { HeroContentType } from '@/types';
 import FeaturedSection from '../components/FeaturedSection';
 import { Utensils } from 'lucide-react';
 
+export const revalidate = 0;
+
 export default async function LandingPage() {
   const hero: HeroContentType[] = await getHero();
-  /* const session = await auth(); */
 
   return (
     <main>
