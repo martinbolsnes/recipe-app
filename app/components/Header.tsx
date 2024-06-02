@@ -11,15 +11,6 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 
 export const Header = async () => {
@@ -61,27 +52,29 @@ export const Header = async () => {
             </SheetHeader>
             <div className={cn('flex flex-col items-end gap-4 py-6 text-lg')}>
               <SheetTrigger asChild>
-                <Link href='/recipes'>All recipes</Link>
+                <Link href='/recipes'>Alle oppskrifter</Link>
               </SheetTrigger>
               <SheetTrigger asChild>
-                <Link href='/recipes'>Categories</Link>
+                <Link href='/recipes/categories'>Kategorier</Link>
               </SheetTrigger>
-              <SheetTrigger asChild>
+              {/* <SheetTrigger asChild>
                 <Link href='/recipes'>About</Link>
               </SheetTrigger>
               <SheetTrigger asChild>
                 <Link href='/recipes'>FAQ</Link>
-              </SheetTrigger>
+              </SheetTrigger> */}
             </div>
             <div className={cn('py-4 flex flex-col w-full gap-4')}>
-              <Button size='default' variant='default'>
+              {/* <Button size='default' variant='default'>
                 <PartyPopper className={cn('w-4 h-4 mr-2')} />
                 Surprise Me
-              </Button>
-              <Button size='default' variant='secondary'>
-                <Plus className={cn('w-4 h-4 mr-2')} />
-                Add Recipe
-              </Button>
+              </Button> */}
+              <Link href='recipes/add-recipe'>
+                <Button size='default' variant='secondary'>
+                  <Plus className={cn('w-4 h-4 mr-2')} />
+                  Legg til oppskrift
+                </Button>
+              </Link>
             </div>
             <SheetFooter></SheetFooter>
           </SheetContent>
