@@ -2,10 +2,9 @@ import { AllRecipesCard } from '../../components/AllRecipesCard';
 import CategoryButtons from '../../components/CategoryButtons';
 import { SearchInput } from '../../components/SearchInput';
 import { cn } from '@/lib/utils';
-import { getRecipe, getCategories } from '@/sanity/sanity.query';
+import { sanityFetch } from '@/sanity/sanity.client';
+import { recipeQuery, categoriesQuery } from '@/sanity/sanity.query';
 import type { RecipeType, CategoryType } from '@/types';
-
-export const revalidate = 0;
 
 export default async function AllRecipesPage({
   searchParams,
@@ -21,7 +20,10 @@ export default async function AllRecipesPage({
   const currentPage = Number(searchParams?.page) || 1;
 
   // Fetch recipes based on query parameters
-  const allRecipes: RecipeType[] = await getRecipe();
+  const allRecipes: RecipeType[] = await sanityFetch({
+    query: recipeQuery,
+    tags: ['recipe'],
+  });
   const filteredRecipes = allRecipes.filter((recipe) => {
     const name = recipe.name?.toLowerCase() || '';
     const shortDescription = recipe.shortDescription?.toLowerCase() || '';

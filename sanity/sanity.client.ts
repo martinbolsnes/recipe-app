@@ -1,4 +1,9 @@
-import { createClient, type ClientConfig } from '@sanity/client';
+import 'server-only';
+import {
+  createClient,
+  type ClientConfig,
+  type QueryParams,
+} from '@sanity/client';
 
 const config: ClientConfig = {
   projectId: 'ksfm5l7t',
@@ -8,6 +13,19 @@ const config: ClientConfig = {
   useCdn: true,
 };
 
-const client = createClient(config);
+export const client = createClient(config);
 
-export default client;
+export async function sanityFetch<QueryResponse>({
+  query,
+  qParams = {},
+  tags,
+}: {
+  query: string;
+  qParams?: QueryParams;
+  tags: string[];
+}): Promise<QueryResponse> {
+  return client.fetch<QueryResponse>(query, qParams, {
+    cache: 'force-cache',
+    next: { tags },
+  });
+}

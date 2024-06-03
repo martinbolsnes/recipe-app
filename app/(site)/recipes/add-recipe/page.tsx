@@ -1,8 +1,9 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { z } from 'zod';
-import client from '@/sanity/sanity.client'; // Make sure to import your sanity client
-import { getCategories } from '@/sanity/sanity.query'; // Adjust the import path according to your project structure
+import { sanityFetch } from '@/sanity/sanity.client';
+import { client } from '@/sanity/sanity.client';
+import { categoriesQuery } from '@/sanity/sanity.query';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
@@ -49,7 +50,10 @@ export default function AddRecipe() {
 
   useEffect(() => {
     async function fetchData() {
-      const fetchedCategories = await getCategories();
+      const fetchedCategories = (await sanityFetch({
+        query: categoriesQuery,
+        tags: ['category'],
+      })) as { _id: string; name: string }[];
       setCategories(fetchedCategories);
     }
     fetchData();

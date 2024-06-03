@@ -1,9 +1,7 @@
 import { groq } from 'next-sanity';
-import client from './sanity.client';
+import { client } from './sanity.client';
 
-export async function getRecipe() {
-  return client.fetch(
-    groq`*[_type == "recipe"]{
+export const recipeQuery = groq`*[_type == "recipe"]{
       _id,
       name,
       "slug": slug.current,
@@ -13,34 +11,20 @@ export async function getRecipe() {
       ingredients,
       instructions,
       featured,
-    }`,
-    { revalidate: 10 }
-  );
-}
+    }`;
 
-export async function getCategories() {
-  return client.fetch(
-    groq`*[_type == "category"]{
+export const categoriesQuery = groq`*[_type == "category"]{
       _id,
       name,
       icon,
-    }`,
-    { revalidate: 10 }
-  );
-}
+    }`;
 
-export async function getRecipesByCategory(categoryName: string) {
-  return client.fetch(
-    groq`*[_type == "recipe" && categories[].name match $categoryName]{
+export const recipesByCategoryQuery = groq`*[_type == "recipe" && categories[].name match $categoryName]{
       _id,
       name,
       "slug": slug.current,
       shortDescription,
-      // ... other fields
-    }`,
-    { categoryName }
-  );
-}
+    }`;
 
 export async function getRecipeBySlug(slug: string) {
   return client.fetch(
@@ -58,14 +42,9 @@ export async function getRecipeBySlug(slug: string) {
   );
 }
 
-export async function getHero() {
-  return client.fetch(
-    groq`*[_type == "hero"]{
+export const heroQuery = groq`*[_type == "hero"]{
       _id,
       name,
       description,
       image {alt, "image": asset->url},
-    }`,
-    { revalidate: 10 }
-  );
-}
+    }`;

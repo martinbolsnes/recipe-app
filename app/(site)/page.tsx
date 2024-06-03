@@ -2,16 +2,17 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
-
-import { getHero } from '@/sanity/sanity.query';
+import { sanityFetch } from '@/sanity/sanity.client';
+import { heroQuery } from '@/sanity/sanity.query';
 import type { HeroContentType } from '@/types';
 import FeaturedSection from '../components/FeaturedSection';
 import { Utensils } from 'lucide-react';
 
-export const revalidate = 0;
-
 export default async function LandingPage() {
-  const hero: HeroContentType[] = await getHero();
+  const hero: HeroContentType[] = await sanityFetch({
+    query: heroQuery,
+    tags: ['hero'],
+  });
 
   return (
     <main>
@@ -47,7 +48,7 @@ export default async function LandingPage() {
                 </p>
               </div>
               <div className={cn('flex flex-col gap-2 min-[400px]:flex-row')}>
-                <Link href={'/login'}>
+                <Link href={'/sign-up'}>
                   <Button variant='default' size='lg'>
                     Start reisen
                   </Button>
