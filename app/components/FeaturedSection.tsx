@@ -1,13 +1,17 @@
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import { getRecipe } from '@/sanity/sanity.query';
+import { recipeQuery } from '@/sanity/sanity.query';
 import type { RecipeType } from '@/types';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { HeartIcon } from 'lucide-react';
+import { sanityFetch } from '@/sanity/sanity.client';
 
 export default async function FeaturedSection() {
-  const featuredRecipes: RecipeType[] = await getRecipe();
+  const featuredRecipes: RecipeType[] = await sanityFetch({
+    query: recipeQuery,
+    tags: ['featured'],
+  });
   const featured = featuredRecipes
     .filter((recipe) => recipe.featured)
     .slice(0, 3);

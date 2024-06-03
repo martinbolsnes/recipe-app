@@ -12,7 +12,8 @@ import {
   Salad,
   Wheat,
 } from 'lucide-react';
-import { getCategories } from '@/sanity/sanity.query';
+import { categoriesQuery } from '@/sanity/sanity.query';
+import { client } from '@/sanity/sanity.client';
 import type { CategoryType } from '@/types';
 import { useEffect, useState } from 'react';
 
@@ -35,7 +36,7 @@ export default function CategoryButtons() {
 
   useEffect(() => {
     async function fetchData() {
-      const fetchedCategories = await getCategories();
+      const fetchedCategories = await client.fetch(categoriesQuery);
       setCategories(fetchedCategories);
     }
 
