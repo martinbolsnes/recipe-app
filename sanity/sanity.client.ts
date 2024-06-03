@@ -8,7 +8,7 @@ const config: ClientConfig = {
   projectId: 'ksfm5l7t',
   dataset: 'production',
   apiVersion: '2023-07-16',
-  token: process.env.SANITY_EDITOR_API_TOKEN,
+  token: process.env.NEXT_PUBLIC_SANITY_EDITOR_API_TOKEN,
   useCdn: true,
 };
 
