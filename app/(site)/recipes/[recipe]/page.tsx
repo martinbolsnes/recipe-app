@@ -84,12 +84,12 @@ export default async function Recipe({ params }: Props) {
               defaultValue='ingredients'
             >
               <TabsList className='grid w-full grid-cols-2 border-b border-neutral-200'>
-                <TabsTrigger value='ingredients'>Ingredients</TabsTrigger>
-                <TabsTrigger value='instructions'>Instructions</TabsTrigger>
+                <TabsTrigger value='ingredients'>Ingredienser</TabsTrigger>
+                <TabsTrigger value='instructions'>Instruksjoner</TabsTrigger>
               </TabsList>
               <TabsContent className='py-6' value='ingredients'>
                 <div className='grid gap-2'>
-                  <h2 className='text-xl font-semibold'>Ingredients</h2>
+                  <h2 className='text-xl font-semibold'>Ingredienser</h2>
                   <ul className='grid gap-1 text-sm pl-6'>
                     {recipe[0].ingredients.map((ingredient, index) => (
                       <li key={index} className={cn('flex items-start')}>
@@ -102,7 +102,7 @@ export default async function Recipe({ params }: Props) {
               </TabsContent>
               <TabsContent className='py-6' value='instructions'>
                 <div className='grid gap-2'>
-                  <h2 className='text-xl font-semibold'>Instructions</h2>
+                  <h2 className='text-xl font-semibold'>Instruksjoner</h2>
                   <ol className='grid gap-2 text-sm pl-6'>
                     {recipe[0].instructions.map((instruction, index) => (
                       <li key={index} className={cn('flex items-start')}>
