@@ -17,6 +17,7 @@ export const categoriesQuery = groq`*[_type == "category"]{
       _id,
       name,
       icon,
+      image {alt, "image": asset->url},
     }`;
 
 export const recipesByCategoryQuery = groq`*[_type == "recipe" && categories[].name match $categoryName]{

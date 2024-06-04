@@ -2,6 +2,10 @@ export type CategoryType = {
   _id: string;
   name: string;
   icon: string;
+  image: {
+    alt: string;
+    image: string;
+  };
 };
 
 export type RecipeType = {
