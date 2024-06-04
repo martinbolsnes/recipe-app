@@ -1,6 +1,6 @@
 import {
   BeefIcon,
-  DessertIcon,
+  CakeSlice,
   FishIcon,
   Martini,
   SaladIcon,
@@ -114,7 +114,7 @@ export default function Component() {
               />
               <div className='flex-1 [grid-area:stack] bg-gradient-to-t from-black/70 to-transparent group-hover:opacity-90 transition-opacity text-white p-6 justify-end flex flex-col gap-2'>
                 <div className='flex items-center gap-2'>
-                  <DessertIcon className='w-6 h-6' />
+                  <CakeSlice className='w-6 h-6' />
                   <h3 className='font-semibold text-lg tracking-tight'>
                     Dessert
                   </h3>
