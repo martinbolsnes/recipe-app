@@ -69,12 +69,6 @@ export const Header = async () => {
                 <PartyPopper className={cn('w-4 h-4 mr-2')} />
                 Surprise Me
               </Button> */}
-              <Link href='recipes/add-recipe'>
-                <Button size='default' variant='secondary'>
-                  <Plus className={cn('w-4 h-4 mr-2')} />
-                  Legg til oppskrift
-                </Button>
-              </Link>
             </div>
             <SheetFooter></SheetFooter>
           </SheetContent>
