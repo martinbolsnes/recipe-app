@@ -7,6 +7,7 @@ import { heroQuery } from '@/sanity/sanity.query';
 import type { HeroContentType } from '@/types';
 import FeaturedSection from '../components/FeaturedSection';
 import { Utensils } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 export default async function LandingPage() {
   const hero: HeroContentType[] = await sanityFetch({
@@ -16,14 +17,20 @@ export default async function LandingPage() {
 
   return (
     <main>
-      <section className={cn('w-full py-12 md:py-24 lg:py-32 h-screen')}>
+      <section
+        className={cn(
+          'mx-auto flex max-w-[980px] flex-col items-center gap-2 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20'
+        )}
+      >
         <div className={cn('container px-4 md:px-6')}>
           <div
             className={cn(
               'flex flex-col items-center justify-center space-y-8 text-center'
             )}
           >
-            <Utensils className={cn('w-20 h-20 text-primary')} />
+            <Badge variant='secondary'>
+              <Utensils className={cn('w-3 h-3 mr-1')} /> MunchMate
+            </Badge>
             <div
               className={cn(
                 'flex flex-col justify-center items-center space-y-8'
@@ -36,26 +43,40 @@ export default async function LandingPage() {
               >
                 <h1
                   className={cn(
-                    'text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none'
+                    'text-center text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]'
                   )}
                 >
                   {hero[0].name}
                 </h1>
                 <p
-                  className={cn('max-w-[650px] text-foreground/60 md:text-2xl')}
+                  className={cn(
+                    'max-w-[750px] text-center text-lg font-light text-foreground'
+                  )}
                 >
                   {hero[0].description}
                 </p>
               </div>
-              <div className={cn('flex flex-col gap-2 min-[400px]:flex-row')}>
+              <div
+                className={cn(
+                  'flex w-full items-center justify-center space-x-4 py-4 md:pb-10'
+                )}
+              >
                 <Link href={'/sign-up'}>
-                  <Button variant='default' size='lg'>
+                  <Button
+                    variant='default'
+                    size='lg'
+                    className={cn('font-bold')}
+                  >
                     Start reisen
                   </Button>
                 </Link>
 
                 <Link href='/recipes'>
-                  <Button variant='outline' size='lg'>
+                  <Button
+                    variant='outline'
+                    size='lg'
+                    className={cn('font-bold')}
+                  >
                     Utforsk oppskrifter
                   </Button>
                 </Link>
