@@ -26,7 +26,7 @@ export default async function FeaturedSection() {
           <div className={cn('space-y-2')}>
             <h2
               className={cn(
-                'text-3xl text-foreground font-bold tracking-tighter sm:text-5xl'
+                'text-2xl text-foreground font-bold tracking-tighter sm:text-4xl'
               )}
             >
               Nye oppskrifter
