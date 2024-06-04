@@ -47,7 +47,7 @@ export default async function Recipe({ params }: Props) {
             alt={recipe[0].image?.alt}
             className={cn('rounded-lg object-cover w-full max-w-[800px]')}
             height='300'
-            src={recipe[0].image?.image || '/images/placeholder.jpg'}
+            src={recipe[0].image?.image || '/placeholder.scg'}
             style={{
               aspectRatio: '500/300',
               objectFit: 'cover',
