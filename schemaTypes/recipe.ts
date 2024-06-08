@@ -26,7 +26,7 @@ const recipe = {
       title: 'Short Description',
       type: 'string',
       description: 'Give a short description of the recipe',
-      validation: (Rule) => Rule.required().min(10).max(50),
+      validation: (Rule) => Rule.required().min(10).max(120),
     }),
     {
       name: 'image',
