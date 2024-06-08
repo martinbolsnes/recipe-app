@@ -34,6 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Recipe({ params }: Props) {
   const slug = params.recipe;
   const recipe: RecipeType[] = await getRecipeBySlug(slug);
+  console.log(recipe[0]);
   return (
     <main className={cn('container mx-auto py-8 px-4 md:px-6')}>
       <div
@@ -62,62 +63,58 @@ export default async function Recipe({ params }: Props) {
               {recipe[0].shortDescription || 'Short description'}
             </p>
             <div className={cn('flex items-center gap-2')}>
-              <div className={cn('flex items-center gap-0.5')}>
-                <StarIcon className={cn('w-5 h-5 fill-primary')} />
-                <StarIcon className={cn('w-5 h-5 fill-primary')} />
-                <StarIcon className={cn('w-5 h-5 fill-primary')} />
-                <StarIcon
-                  className={cn('w-5 h-5 fill-muted stroke-muted-foreground')}
-                />
-                <StarIcon
-                  className={cn('w-5 h-5 fill-muted stroke-muted-foreground')}
-                />
+              <div className={cn('flex items-center')}>
+                <p>{recipe[0].servings}</p>
               </div>
-              <span
-                className={cn('text-sm text-neutral-500 dark:text-neutral-400')}
+              <Tabs
+                className={cn('w-full max-w-[800px]')}
+                defaultValue='ingredients'
               >
-                (4.2 / 5)
-              </span>
+                <TabsList className='grid w-full grid-cols-2 border-b border-neutral-200'>
+                  <TabsTrigger value='ingredients'>Ingredienser</TabsTrigger>
+                  <TabsTrigger value='instructions'>Instruksjoner</TabsTrigger>
+                </TabsList>
+                <TabsContent className='py-6' value='ingredients'>
+                  <div className='grid gap-2'>
+                    {recipe[0].ingredientsSubheaderOne ? (
+                      <p className='text-lg font-semibold'>
+                        {recipe[0].ingredientsSubheaderOne}
+                      </p>
+                    ) : null}
+                    <ul className='grid gap-1 text-sm pl-6'>
+                      {recipe[0].ingredientsOne.map((ingredient, index) => (
+                        <li key={index} className={cn('flex items-start')}>
+                          <Squircle className='w-4 h-4 mr-2 inline-block text-primary' />
+                          <span className={cn('flex-1')}>{ingredient}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </TabsContent>
+                <TabsContent className='py-6' value='instructions'>
+                  <div className='grid gap-2'>
+                    <h2 className='text-xl font-semibold'>Instruksjoner</h2>
+                    <ol className='grid gap-2 text-sm pl-6'>
+                      {recipe[0].instructionsSubheaderOne && (
+                        <li className='text-lg font-semibold'>
+                          {recipe[0].instructionsSubheaderOne}
+                        </li>
+                      )}
+                      {recipe[0].instructionsOne.map((instruction, index) => (
+                        <li key={index} className={cn('flex items-start')}>
+                          <Squircle className='w-4 h-4 mr-2 inline-block text-primary' />
+                          <span className={cn('flex-1')}>{instruction}</span>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                </TabsContent>
+              </Tabs>
             </div>
-            <Tabs
-              className={cn('w-full max-w-[800px]')}
-              defaultValue='ingredients'
-            >
-              <TabsList className='grid w-full grid-cols-2 border-b border-neutral-200'>
-                <TabsTrigger value='ingredients'>Ingredienser</TabsTrigger>
-                <TabsTrigger value='instructions'>Instruksjoner</TabsTrigger>
-              </TabsList>
-              <TabsContent className='py-6' value='ingredients'>
-                <div className='grid gap-2'>
-                  <h2 className='text-xl font-semibold'>Ingredienser</h2>
-                  <ul className='grid gap-1 text-sm pl-6'>
-                    {recipe[0].ingredients.map((ingredient, index) => (
-                      <li key={index} className={cn('flex items-start')}>
-                        <Squircle className='w-4 h-4 mr-2 inline-block text-primary' />
-                        <span className={cn('flex-1')}>{ingredient}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </TabsContent>
-              <TabsContent className='py-6' value='instructions'>
-                <div className='grid gap-2'>
-                  <h2 className='text-xl font-semibold'>Instruksjoner</h2>
-                  <ol className='grid gap-2 text-sm pl-6'>
-                    {recipe[0].instructions.map((instruction, index) => (
-                      <li key={index} className={cn('flex items-start')}>
-                        <Squircle className='w-4 h-4 mr-2 inline-block text-primary' />
-                        <span className={cn('flex-1')}>{instruction}</span>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              </TabsContent>
-            </Tabs>
+            <ConvertDialog />
           </div>
-          <ConvertDialog />
+          <RecomendedCard />
         </div>
-        <RecomendedCard />
       </div>
     </main>
   );
