@@ -8,8 +8,10 @@ import type { HeroContentType } from '@/types';
 import FeaturedSection from '../components/FeaturedSection';
 import { Utensils } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { currentUser } from '@clerk/nextjs/server';
 
 export default async function LandingPage() {
+  const user = await currentUser();
   const hero: HeroContentType[] = await sanityFetch({
     query: heroQuery,
     tags: ['hero'],
@@ -61,16 +63,27 @@ export default async function LandingPage() {
                   'flex w-full items-center justify-center space-x-4 py-4 md:pb-10'
                 )}
               >
-                <Link href={'/sign-up'}>
-                  <Button
-                    variant='default'
-                    size='lg'
-                    className={cn('font-bold')}
-                  >
-                    Start reisen
-                  </Button>
-                </Link>
-
+                {!user ? (
+                  <Link href={'/sign-up'}>
+                    <Button
+                      variant='default'
+                      size='lg'
+                      className={cn('font-bold')}
+                    >
+                      Kom i gang
+                    </Button>
+                  </Link>
+                ) : (
+                  <Link href={'/recipes'}>
+                    <Button
+                      variant='default'
+                      size='lg'
+                      className={cn('font-bold')}
+                    >
+                      Kom i gang
+                    </Button>
+                  </Link>
+                )}
                 <Link href='/recipes'>
                   <Button
                     variant='outline'
