@@ -5,6 +5,9 @@ import { cn } from '@/lib/utils';
 import { sanityFetch } from '@/sanity/sanity.client';
 import { recipeQuery, categoriesQuery } from '@/sanity/sanity.query';
 import type { RecipeType, CategoryType } from '@/types';
+import { currentUser } from '@clerk/nextjs/server';
+
+export const revalidate = 60;
 
 export default async function AllRecipesPage({
   searchParams,
@@ -18,8 +21,8 @@ export default async function AllRecipesPage({
   const query = searchParams?.query || '';
   const category = searchParams?.category || '';
   const currentPage = Number(searchParams?.page) || 1;
+  const user = await currentUser();
 
-  // Fetch recipes based on query parameters
   const allRecipes: RecipeType[] = await sanityFetch({
     query: recipeQuery,
     tags: ['recipe'],
@@ -42,6 +45,13 @@ export default async function AllRecipesPage({
 
   return (
     <main className={cn('container mx-auto py-8 px-4 md:px-6')}>
+      {user ? (
+        <h3 className={cn('md:text-lg font-semibold text-foreground mb-2')}>
+          Hva vil du spise idag, {user.firstName}? 🍽
+        </h3>
+      ) : (
+        <div className={cn('hidden')}></div>
+      )}
       <div className={cn('flex items-center justify-between mb-4')}>
         <div className={cn('flex items-center gap-4')}>
           <SearchInput placeholder='Søk oppskrifter...' />
