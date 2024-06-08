@@ -61,7 +61,7 @@ const recipe = {
       description: 'Enter the number of servings',
     },
     {
-      name: 'ingredientsSubHeaderOne',
+      name: 'ingredientsSubheaderOne',
       title: 'Sub Header 1',
       type: 'string',
       description: 'Enter a sub header',
@@ -73,7 +73,7 @@ const recipe = {
       of: [{ type: 'string' }],
     },
     {
-      name: 'ingredientsSubHeaderTwo',
+      name: 'ingredientsSubheaderTwo',
       title: 'Sub Header 2',
       type: 'string',
       description: 'Enter a sub header',
@@ -85,7 +85,7 @@ const recipe = {
       of: [{ type: 'string' }],
     },
     {
-      name: 'ingredientsSubHeaderThree',
+      name: 'ingredientsSubheaderThree',
       title: 'Sub Header 3',
       type: 'string',
       description: 'Enter a sub header',
@@ -97,7 +97,7 @@ const recipe = {
       of: [{ type: 'string' }],
     },
     {
-      name: 'ingredientsSubHeaderFour',
+      name: 'ingredientsSubheaderFour',
       title: 'Sub Header 4',
       type: 'string',
       description: 'Enter a sub header',
@@ -109,7 +109,7 @@ const recipe = {
       of: [{ type: 'string' }],
     },
     {
-      name: 'ingredientsSubHeaderFive',
+      name: 'ingredientsSubheaderFive',
       title: 'Sub Header 5',
       type: 'string',
       description: 'Enter a sub header',
@@ -121,7 +121,7 @@ const recipe = {
       of: [{ type: 'string' }],
     },
     {
-      name: 'instructionsSubHeaderOne',
+      name: 'instructionsSubheaderOne',
       title: 'Sub Header 1',
       type: 'string',
       description: 'Enter a sub header',
@@ -133,7 +133,7 @@ const recipe = {
       of: [{ type: 'string' }],
     },
     {
-      name: 'instructionsSubHeaderTwo',
+      name: 'instructionsSubheaderTwo',
       title: 'Sub Header 2',
       type: 'string',
       description: 'Enter a sub header',
@@ -145,7 +145,7 @@ const recipe = {
       of: [{ type: 'string' }],
     },
     {
-      name: 'instructionsSubHeaderThree',
+      name: 'instructionsSubheaderThree',
       title: 'Sub Header 3',
       type: 'string',
       description: 'Enter a sub header',
@@ -157,7 +157,7 @@ const recipe = {
       of: [{ type: 'string' }],
     },
     {
-      name: 'instructionsSubHeaderFour',
+      name: 'instructionsSubheaderFour',
       title: 'Sub Header 4',
       type: 'string',
       description: 'Enter a sub header',
@@ -169,7 +169,7 @@ const recipe = {
       of: [{ type: 'string' }],
     },
     {
-      name: 'instructionsSubHeaderFive',
+      name: 'instructionsSubheaderFive',
       title: 'Sub Header 5',
       type: 'string',
       description: 'Enter a sub header',
