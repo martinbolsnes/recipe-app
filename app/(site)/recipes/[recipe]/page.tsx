@@ -36,7 +36,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Recipe({ params }: Props) {
   const slug = params.recipe;
   const recipe: RecipeType[] = await getRecipeBySlug(slug);
-  console.log(recipe[0]);
   return (
     <main className={cn('container mx-auto py-8 px-4 md:px-6')}>
       <div
