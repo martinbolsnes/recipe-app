@@ -80,7 +80,7 @@ export default async function Recipe({ params }: Props) {
                 className={cn('disabled cursor-default border-primary')}
               >
                 <UtensilsCrossed className='w-4 h-4 mr-2 inline-block' />
-                {recipe[0].servings} servings
+                {recipe[0].servings} porsjoner
               </Button>
             ) : null}
           </div>
@@ -251,7 +251,7 @@ export default async function Recipe({ params }: Props) {
           </div>
           <ConvertDialog />
         </div>
-        <RecomendedCard />
+        {/* <RecomendedCard /> */}
       </div>
     </main>
   );
