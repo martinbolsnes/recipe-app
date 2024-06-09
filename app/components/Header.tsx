@@ -60,11 +60,11 @@ export const Header = async () => {
               </SheetTrigger> */}
               {userId ? (
                 <>
-                  {/* <Separator />
+                  <Separator />
                   <SheetTrigger asChild>
                     <Link href='/profile'>Profil</Link>
                   </SheetTrigger>
-                  <SheetTrigger asChild>
+                  {/* <SheetTrigger asChild>
                     <Link href='/user/view-recipe'>Dine oppskrifter</Link>
                   </SheetTrigger>
                   <SheetTrigger asChild>
