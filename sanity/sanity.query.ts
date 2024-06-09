@@ -90,3 +90,11 @@ export const heroQuery = groq`*[_type == "hero"]{
       description,
       image {alt, "image": asset->url},
     }`;
+
+export const newRecipesQuery = groq`*[_type == "recipe"] | order(_createdAt desc){
+      _id,
+      name,
+      "slug": slug.current,
+      shortDescription,
+      image {alt, "image": asset->url},
+    }`;

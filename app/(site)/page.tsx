@@ -9,6 +9,7 @@ import FeaturedSection from '../components/FeaturedSection';
 import { Utensils } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { currentUser } from '@clerk/nextjs/server';
+import NewRecipesSection from '../components/NewRecipesSection';
 
 export default async function LandingPage() {
   const user = await currentUser();
@@ -110,6 +111,7 @@ export default async function LandingPage() {
         </div>
       </section>
       <FeaturedSection />
+      <NewRecipesSection />
     </main>
   );
 }
