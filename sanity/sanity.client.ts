@@ -9,7 +9,7 @@ const config: ClientConfig = {
   dataset: 'production',
   apiVersion: '2023-07-16',
   token: process.env.SANITY_EDITOR_API_TOKEN,
-  useCdn: true,
+  useCdn: false,
 };
 
 export const client = createClient(config);
@@ -25,6 +25,6 @@ export async function sanityFetch<QueryResponse>({
 }): Promise<QueryResponse> {
   return client.fetch<QueryResponse>(query, qParams, {
     cache: process.env.NODE_ENV === 'development' ? 'no-cache' : 'default',
-    next: { tags, revalidate: 30 },
+    next: { tags },
   });
 }
