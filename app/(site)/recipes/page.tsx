@@ -3,11 +3,9 @@ import CategoryButtons from '../../components/CategoryButtons';
 import { SearchInput } from '../../components/SearchInput';
 import { cn } from '@/lib/utils';
 import { sanityFetch } from '@/sanity/sanity.client';
-import { recipeQuery, categoriesQuery } from '@/sanity/sanity.query';
-import type { RecipeType, CategoryType } from '@/types';
+import { recipeQuery } from '@/sanity/sanity.query';
+import type { RecipeType } from '@/types';
 import { currentUser } from '@clerk/nextjs/server';
-
-export const revalidate = 60;
 
 export default async function AllRecipesPage({
   searchParams,
