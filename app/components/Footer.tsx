@@ -25,7 +25,7 @@ export const Footer = () => {
           </Link>
         </div>
 
-        <div className='grid gap-1'>
+        {/* <div className='grid gap-1'>
           <h3 className='font-semibold'>Følg oss</h3>
           <Link href='#' prefetch={false}>
             Instagram
@@ -36,7 +36,7 @@ export const Footer = () => {
           <Link href='#' prefetch={false}>
             X
           </Link>
-        </div>
+        </div> */}
       </div>
     </footer>
   );
