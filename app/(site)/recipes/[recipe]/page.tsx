@@ -1,5 +1,11 @@
 import { cn } from '@/lib/utils';
-import { AlarmClock, Squircle, StarIcon, UtensilsCrossed } from 'lucide-react';
+import {
+  AlarmClock,
+  ArrowLeftIcon,
+  Squircle,
+  StarIcon,
+  UtensilsCrossed,
+} from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
 import { Metadata } from 'next';
@@ -11,6 +17,7 @@ import ConvertDialog from '@/app/components/ConvertDialog';
 import { RecomendedCard } from '@/app/components/RecomendedCard';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 type Props = {
   params: {
@@ -37,7 +44,13 @@ export default async function Recipe({ params }: Props) {
   const slug = params.recipe;
   const recipe: RecipeType[] = await getRecipeBySlug(slug);
   return (
-    <main className={cn('container mx-auto py-8 px-4 md:px-6')}>
+    <main className={cn('container mx-auto py-4 px-2 md:px-4')}>
+      <Link href='/recipes'>
+        <Button variant='outline' size={'sm'} className={cn('text-sm')}>
+          <ArrowLeftIcon className={cn('w-4 h-4 mr-2')} />
+          Tilbake
+        </Button>
+      </Link>
       <div
         className={cn(
           'flex flex-col gap-6 lg:gap-12 items-start max-w-6xl px-4 mx-auto py-6'
