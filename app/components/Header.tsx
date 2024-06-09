@@ -10,6 +10,7 @@ import {
   SheetHeader,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import { Separator } from '@/components/ui/separator';
 
 import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 
@@ -57,12 +58,30 @@ export const Header = async () => {
               <SheetTrigger asChild>
                 <Link href='/recipes/categories'>Kategorier</Link>
               </SheetTrigger>
-              {/* <SheetTrigger asChild>
-                <Link href='/recipes'>About</Link>
-              </SheetTrigger>
-              <SheetTrigger asChild>
-                <Link href='/recipes'>FAQ</Link>
-              </SheetTrigger> */}
+              {userId ? (
+                <>
+                  <Separator />
+                  <SheetTrigger asChild>
+                    <Link href='/profile'>Profil</Link>
+                  </SheetTrigger>
+                  <SheetTrigger asChild>
+                    <Link href='/user/view-recipe'>Dine oppskrifter</Link>
+                  </SheetTrigger>
+                  <SheetTrigger asChild>
+                    <Link href='/user/add-recipe'>Legg til oppskrift</Link>
+                  </SheetTrigger>
+                </>
+              ) : (
+                <>
+                  <Separator />
+                  <SheetTrigger asChild>
+                    <Link href='/sign-up'>Registrer deg</Link>
+                  </SheetTrigger>
+                  <SheetTrigger asChild>
+                    <Link href='/sign-in'>Logg inn</Link>
+                  </SheetTrigger>
+                </>
+              )}
             </div>
             <div className={cn('py-4 flex flex-col w-full gap-4')}>
               {/* <Button size='default' variant='default'>
