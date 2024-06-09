@@ -16,7 +16,7 @@ export default async function FeaturedSection() {
     .filter((recipe) => recipe.featured)
     .slice(0, 3);
   return (
-    <section className={cn('w-full py-12 md:py-24 lg:py-32 bg-muted')}>
+    <section className={cn('w-full py-12 md:py-24 lg:py-32')}>
       <div className={cn('container px-4 md:px-6')}>
         <div
           className={cn(
@@ -29,15 +29,14 @@ export default async function FeaturedSection() {
                 'text-2xl text-foreground font-bold tracking-tighter sm:text-4xl'
               )}
             >
-              Nye oppskrifter
+              Utvalgte oppskrifter
             </h2>
             <p
               className={cn(
                 'max-w-[900px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'
               )}
             >
-              Få med deg noen av de nyeste oppskriftene som er lagt til på
-              MunchMate
+              Noen av våre beste oppskrifter som er lagt til på MunchMate
             </p>
           </div>
         </div>
@@ -51,7 +50,7 @@ export default async function FeaturedSection() {
               key={recipe._id}
               href={`/recipes/${recipe.slug}`}
               className={cn(
-                'flex flex-col justify-between rounded-md bg-background shadow-sm transition-all hover:shadow-md overflow-hidden cursor-pointer'
+                'flex flex-col justify-between rounded-md bg-background shadow-md transition-all hover:shadow-lg overflow-hidden cursor-pointer'
               )}
             >
               <div className={cn('relative')}>
