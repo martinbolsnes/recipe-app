@@ -53,14 +53,14 @@ export const Header = async () => {
             </SheetHeader>
             <div className={cn('flex flex-col items-end gap-4 py-6 text-lg')}>
               <SheetTrigger asChild>
-                <Link href='/recipes'>Alle oppskrifter</Link>
+                <Link href='/recipes'>Oppskrifter</Link>
               </SheetTrigger>
-              <SheetTrigger asChild>
+              {/* <SheetTrigger asChild>
                 <Link href='/recipes/categories'>Kategorier</Link>
-              </SheetTrigger>
+              </SheetTrigger> */}
               {userId ? (
                 <>
-                  <Separator />
+                  {/* <Separator />
                   <SheetTrigger asChild>
                     <Link href='/profile'>Profil</Link>
                   </SheetTrigger>
@@ -69,7 +69,7 @@ export const Header = async () => {
                   </SheetTrigger>
                   <SheetTrigger asChild>
                     <Link href='/user/add-recipe'>Legg til oppskrift</Link>
-                  </SheetTrigger>
+                  </SheetTrigger> */}
                 </>
               ) : (
                 <>
