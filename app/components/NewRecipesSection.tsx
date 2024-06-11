@@ -13,7 +13,7 @@ export default async function NewRecipesSection() {
     tags: ['recipe'],
   });
 
-  const newRecipe = newRecipes;
+  const newRecipe = newRecipes.slice(0, 6);
 
   return (
     <section className={cn('w-full py-8 md:py-20 lg:py-24')}>
