@@ -14,9 +14,12 @@ export default async function PrivatePage() {
 
   return (
     <main className={cn('container mx-auto py-8 px-4 md:px-6')}>
-      <div className={cn('flex mb-4 h-screen')}>
-        <p>{data.user?.user_metadata?.full_name}</p>
+      <div className='absolute top-20 right-6'>
         <LogoutButton />
+      </div>
+      <div className={cn('flex flex-col mb-4 h-screen')}>
+        <h1>Din profil</h1>
+        <p>{data.user?.user_metadata?.email}</p>
       </div>
     </main>
   );
