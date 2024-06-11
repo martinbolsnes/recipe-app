@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Comfortaa as FontSans } from 'next/font/google';
 import '../globals.css';
-import { ClerkProvider } from '@clerk/nextjs';
 
 import { cn } from '@/lib/utils';
 import { Header } from '../components/Header';
@@ -18,27 +17,25 @@ export const metadata: Metadata = {
   description: 'Your favorite recipes in one place',
 };
 
-export default function RootLayout({
+export default function SiteLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang='en'>
-        <body
-          className={cn(
-            'min-h-screen bg-background font-sans antialiased overflow-x-hidden',
-            fontSans.variable
-          )}
-        >
-          <Header />
+    <html lang='en'>
+      <body
+        className={cn(
+          'min-h-screen bg-background font-sans antialiased overflow-x-hidden',
+          fontSans.variable
+        )}
+      >
+        <Header />
 
-          {children}
-          <Toaster />
-          <Footer />
-        </body>
-      </html>
-    </ClerkProvider>
+        {children}
+        <Toaster />
+        <Footer />
+      </body>
+    </html>
   );
 }
