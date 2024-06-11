@@ -1,6 +1,6 @@
+import { createSupabaseServerComponentClient } from '../utils/supabase/server';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { auth, currentUser } from '@clerk/nextjs/server';
 import { Menu, PartyPopper, Plus, Utensils } from 'lucide-react';
 import Link from 'next/link';
 import {
@@ -11,11 +11,16 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
-
-import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import Avatar from './Avatar';
+import LogoutButton from './Logout/Logout';
 
 export const Header = async () => {
-  const { userId } = auth();
+  const {
+    data: { session },
+    error,
+  } = await createSupabaseServerComponentClient().auth.getSession();
+
+  const user = session?.user;
   return (
     <header
       className={cn(
@@ -29,14 +34,12 @@ export const Header = async () => {
         </Link>
       </div>
       <div className={cn('flex items-center gap-4')}>
-        {userId ? (
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+        {user ? (
+          <Avatar />
         ) : (
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
+          <Link href='/login'>
+            <Button variant='outline'>Logg inn</Button>
+          </Link>
         )}
         <Sheet>
           <SheetTrigger asChild>
@@ -55,33 +58,24 @@ export const Header = async () => {
               <SheetTrigger asChild>
                 <Link href='/recipes'>Oppskrifter</Link>
               </SheetTrigger>
-              {/* <SheetTrigger asChild>
-                <Link href='/recipes/categories'>Kategorier</Link>
-              </SheetTrigger> */}
-              {userId ? (
-                <>
-                  <Separator />
-                  <SheetTrigger asChild>
-                    <Link href='/profile'>Profil</Link>
-                  </SheetTrigger>
-                  {/* <SheetTrigger asChild>
+              <>
+                <Separator />
+                {user ? (
+                  <>
+                    <SheetTrigger asChild>
+                      <Link href='/profile'>Profil</Link>
+                    </SheetTrigger>
+                    {/* <SheetTrigger asChild>
                     <Link href='/user/view-recipe'>Dine oppskrifter</Link>
                   </SheetTrigger>
                   <SheetTrigger asChild>
                     <Link href='/user/add-recipe'>Legg til oppskrift</Link>
                   </SheetTrigger> */}
-                </>
-              ) : (
-                <>
-                  <Separator />
-                  <SheetTrigger asChild>
-                    <Link href='/sign-up'>Registrer deg</Link>
-                  </SheetTrigger>
-                  <SheetTrigger asChild>
-                    <Link href='/sign-in'>Logg inn</Link>
-                  </SheetTrigger>
-                </>
-              )}
+                  </>
+                ) : (
+                  <Link href='/login'>Logg inn</Link>
+                )}
+              </>
             </div>
             <div className={cn('py-4 flex flex-col w-full gap-4')}>
               {/* <Button size='default' variant='default'>
