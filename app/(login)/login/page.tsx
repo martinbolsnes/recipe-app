@@ -6,7 +6,7 @@ import LoginButtonGoogle from '@/app/components/Login/LoginGoogle';
 
 export default function LoginPage() {
   return (
-    <div className='mx-auto max-w-md space-y-6 py-12'>
+    <div className='container mx-auto max-w-md space-y-6 py-12'>
       <div className='space-y-2 text-center'>
         <h1 className='text-3xl font-bold flex items-center justify-center'>
           <UtensilsIcon className='mr-2 h-6 w-6' />
