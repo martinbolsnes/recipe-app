@@ -109,7 +109,7 @@ export default async function Recipe({ params }: Props) {
               <TabsContent className='py-6' value='ingredients'>
                 <div className='grid gap-2'>
                   {recipe[0].ingredientsSubheaderOne ? (
-                    <p className='text-lg font-semibold'>
+                    <p className='text-sm font-semibold'>
                       {recipe[0].ingredientsSubheaderOne}
                     </p>
                   ) : null}
