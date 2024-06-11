@@ -1,3 +1,4 @@
+import { createSupabaseServerClient } from '../../utils/supabase/server';
 import { AllRecipesCard } from '../../components/AllRecipesCard';
 import CategoryButtons from '../../components/CategoryButtons';
 import { SearchInput } from '../../components/SearchInput';
@@ -5,7 +6,6 @@ import { cn } from '@/lib/utils';
 import { sanityFetch } from '@/sanity/sanity.client';
 import { recipeQuery } from '@/sanity/sanity.query';
 import type { RecipeType } from '@/types';
-import { currentUser } from '@clerk/nextjs/server';
 
 export default async function AllRecipesPage({
   searchParams,
@@ -16,10 +16,11 @@ export default async function AllRecipesPage({
     page?: string;
   };
 }) {
+  const supabase = createSupabaseServerClient();
+  const { data: user, error } = await supabase.auth.getUser();
   const query = searchParams?.query || '';
   const category = searchParams?.category || '';
   const currentPage = Number(searchParams?.page) || 1;
-  const user = await currentUser();
 
   const allRecipes: RecipeType[] = await sanityFetch({
     query: recipeQuery,
@@ -43,12 +44,14 @@ export default async function AllRecipesPage({
 
   return (
     <main className={cn('container mx-auto py-8 px-4 md:px-6')}>
-      {user ? (
+      {user?.user?.user_metadata.full_name ? (
         <h3 className={cn('md:text-lg font-semibold text-foreground mb-2')}>
-          Hva vil du spise idag, {user.firstName}? 🍽
+          Hva vil du spise idag, {user?.user?.user_metadata.full_name}? 🍽
         </h3>
       ) : (
-        <div className={cn('hidden')}></div>
+        <h3 className={cn('md:text-lg font-semibold text-foreground mb-2')}>
+          Hva vil du spise idag? 🍽
+        </h3>
       )}
       <div className={cn('flex items-center justify-between mb-4')}>
         <div className={cn('flex items-center gap-4')}>
