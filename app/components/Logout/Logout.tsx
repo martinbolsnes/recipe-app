@@ -19,7 +19,11 @@ export default function LogoutButton() {
   };
 
   return (
-    <Button variant='outline' onClick={handleLogout}>
+    <Button
+      variant='outline'
+      className='border-rose-500'
+      onClick={handleLogout}
+    >
       {loading ? <LoadingSpinner /> : 'Logg ut'}
     </Button>
   );
