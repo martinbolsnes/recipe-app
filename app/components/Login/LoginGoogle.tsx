@@ -10,6 +10,7 @@ export default function LoginButtonGoogle(props: { nextUrl?: string }) {
   const supabase = createClient();
 
   const handleLogin = async () => {
+    setLoading(true);
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
@@ -18,6 +19,7 @@ export default function LoginButtonGoogle(props: { nextUrl?: string }) {
         }`,
       },
     });
+    setLoading(false);
   };
 
   return (
