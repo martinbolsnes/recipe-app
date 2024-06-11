@@ -3,7 +3,7 @@ export const metadata = {
   description: 'Manage your recipes and ingredients',
 };
 
-export default function RootLayout({
+export default function StudioLayout({
   children,
 }: {
   children: React.ReactNode;
