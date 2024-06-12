@@ -49,14 +49,18 @@ export default async function AllRecipesPage({
   });
 
   return (
-    <main className={cn('container mx-auto py-8 px-4 md:px-6')}>
+    <main className={cn('min-h-screen container mx-auto py-8 px-4 md:px-6')}>
       {data?.username ? (
         <h3 className={cn('md:text-lg font-semibold text-foreground mb-2')}>
-          Hva vil du spise idag, {data?.username}? 🍽
+          Hva vil du lage idag, {data?.username}? 🍽
+        </h3>
+      ) : user.data.user?.user_metadata?.name ? (
+        <h3 className={cn('md:text-lg font-semibold text-foreground mb-2')}>
+          Hva vil du lage idag, {user.data.user?.user_metadata?.name}? 🍽
         </h3>
       ) : (
         <h3 className={cn('md:text-lg font-semibold text-foreground mb-2')}>
-          Hva vil du spise idag? 🍽
+          Hva vil du lage idag? 🍽
         </h3>
       )}
       <div className={cn('flex items-center justify-between mb-4')}>
