@@ -1,4 +1,4 @@
-import { createSupabaseServerComponentClient } from '../utils/supabase/server';
+import { createClient } from '../utils/supabase/server';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Menu, PartyPopper, Plus, Utensils } from 'lucide-react';
@@ -16,11 +16,10 @@ import LogoutButton from './Logout/Logout';
 
 export const Header = async () => {
   const {
-    data: { session },
+    data: { user },
     error,
-  } = await createSupabaseServerComponentClient().auth.getSession();
+  } = await createClient().auth.getUser();
 
-  const user = session?.user;
   return (
     <header
       className={cn(
