@@ -42,7 +42,7 @@ export default async function Recipe({ params }: Props) {
   const slug = params.recipe;
   const recipe: RecipeType[] = await getRecipeBySlug(slug);
   return (
-    <main className={cn('container mx-auto py-4 px-2 md:px-4')}>
+    <main className={cn('min-h-screen container mx-auto py-4 px-2 md:px-4')}>
       <Link href='/recipes'>
         <Button variant='outline' size={'sm'} className={cn('text-sm')}>
           <ArrowLeftIcon className={cn('w-4 h-4 mr-2')} />
