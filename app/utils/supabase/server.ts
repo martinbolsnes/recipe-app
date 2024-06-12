@@ -1,51 +1,36 @@
-import { type NextRequest, type NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
-import { deleteCookie, getCookie, setCookie } from 'cookies-next';
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
+import { cookies } from 'next/headers';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY!;
 
-// server component can only get cookies and not set them, hence the "component" check
-export function createSupabaseServerClient(component: boolean = false) {
-  cookies().getAll();
+export function createClient() {
+  const cookieStore = cookies();
+
+  // Create a server's supabase client with newly configured cookie,
+  // which could be used to maintain user's session
   return createServerClient(supabaseUrl, supabaseKey, {
     cookies: {
       get(name: string) {
-        return getCookie(name, { cookies });
+        return cookieStore.get(name)?.value;
       },
       set(name: string, value: string, options: CookieOptions) {
-        if (component) return;
-        setCookie(name, value, { cookies, ...options });
+        try {
+          cookieStore.set({ name, value, ...options });
+        } catch (error) {
+          // The `set` method was called from a Server Component.
+          // This can be ignored if you have middleware refreshing
+          // user sessions.
+        }
       },
       remove(name: string, options: CookieOptions) {
-        if (component) return;
-        deleteCookie(name, { cookies, ...options });
-      },
-    },
-  });
-}
-
-export function createSupabaseServerComponentClient() {
-  cookies().getAll();
-  return createSupabaseServerClient(true);
-}
-
-export function createSupabaseReqResClient(
-  req: NextRequest,
-  res: NextResponse
-) {
-  cookies().getAll();
-  return createServerClient(supabaseUrl, supabaseKey, {
-    cookies: {
-      get(name: string) {
-        return getCookie(name, { req, res });
-      },
-      set(name: string, value: string, options: CookieOptions) {
-        setCookie(name, value, { req, res, ...options });
-      },
-      remove(name: string, options: CookieOptions) {
-        setCookie(name, '', { req, res, ...options });
+        try {
+          cookieStore.set({ name, value: '', ...options });
+        } catch (error) {
+          // The `delete` method was called from a Server Component.
+          // This can be ignored if you have middleware refreshing
+          // user sessions.
+        }
       },
     },
   });
