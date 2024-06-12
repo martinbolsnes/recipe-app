@@ -11,8 +11,11 @@ import AccountForm from './update-username/page';
 export default async function PrivatePage() {
   const supabase = createClient();
 
-  const { data, error } = await supabase.auth.getUser();
-  if (error || !data?.user) {
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+  if (error || !user) {
     redirect('/login');
   }
 
@@ -25,23 +28,19 @@ export default async function PrivatePage() {
       <div className={cn('flex flex-col my-20 md:w-1/3')}>
         <div className={cn('space-y-4')}>
           <Avatar className='w-32 h-32'>
-            <AvatarImage src={data.user?.user_metadata?.avatar_url} />
-            <AvatarFallback>{data.user?.user_metadata?.name}</AvatarFallback>
+            <AvatarImage src={user?.user_metadata?.avatar_url} />
+            <AvatarFallback>{user?.user_metadata?.name}</AvatarFallback>
           </Avatar>
           <div className={cn('space-y-2')}>
             <Label htmlFor='name'>Navn</Label>
-            <Input
-              name='name'
-              value={data.user?.user_metadata?.name}
-              disabled
-            />
+            <Input name='name' value={user?.user_metadata?.name} disabled />
           </div>
           <div className={cn('space-y-2')}>
             <Label htmlFor='email'>Mail</Label>
-            <Input value={data.user?.user_metadata?.email} disabled />
+            <Input value={user?.user_metadata?.email} disabled />
           </div>
 
-          <AccountForm user={data.user} />
+          <AccountForm user={user} />
         </div>
       </div>
     </main>
