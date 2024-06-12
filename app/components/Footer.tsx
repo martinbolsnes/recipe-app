@@ -5,7 +5,7 @@ import { createClient } from '../utils/supabase/server';
 
 export const Footer = async () => {
   const supabase = createClient();
-  const user = await supabase.auth.getUser();
+  const { data: user } = await supabase.auth.getUser();
   return (
     <footer className='p-6 md:py-12 w-full bg-muted'>
       <div className='container max-w-7xl grid grid-cols-2 sm:grid-cols-3 gap-8 text-sm'>
@@ -29,17 +29,13 @@ export const Footer = async () => {
             Kategorier
           </Link> */}
         </div>
-        {user ? (
+        {user?.user ? (
           <div className='grid gap-1'>
-            <Link href='/profile' prefetch={false}>
-              Profil
-            </Link>
+            <Link href='/profile'>Profil</Link>
           </div>
         ) : (
           <div className='grid gap-1'>
-            <Link href='/login' prefetch={false}>
-              Logg inn
-            </Link>
+            <Link href='/login'>Logg inn</Link>
           </div>
         )}
       </div>
