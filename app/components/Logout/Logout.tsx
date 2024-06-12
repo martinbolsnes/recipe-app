@@ -24,7 +24,7 @@ export default function LogoutButton() {
       className='border-rose-500'
       onClick={handleLogout}
     >
-      {loading ? <LoadingSpinner /> : 'Logg ut'}
+      {loading ? <LoadingSpinner fill='fill-rose-500' /> : 'Logg ut'}
     </Button>
   );
 }
