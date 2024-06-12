@@ -6,8 +6,6 @@ import LogoutButton from '@/app/components/Logout/Logout';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 import AccountForm from './update-username/page';
 
 export default async function PrivatePage() {
