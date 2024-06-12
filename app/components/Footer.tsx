@@ -8,7 +8,7 @@ export const Footer = async () => {
   const { data: user } = await supabase.auth.getUser();
   return (
     <footer className='p-6 md:py-12 w-full bg-muted'>
-      <div className='container max-w-7xl grid grid-cols-2 sm:grid-cols-3 gap-8 text-sm'>
+      <div className='container max-w-7xl grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm'>
         <div className='grid gap-1'>
           <Link href='/'>
             <h3 className='font-semibold flex'>
@@ -23,7 +23,7 @@ export const Footer = async () => {
         <div className='grid gap-1'>
           {/* <h3 className='font-semibold'>Oppskrifter</h3> */}
           <Link href='/recipes' prefetch={false}>
-            Alle oppskrifter
+            Oppskrifter
           </Link>
           {/* <Link href='/recipes/categories' prefetch={false}>
             Kategorier
