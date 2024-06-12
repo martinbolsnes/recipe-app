@@ -1,4 +1,4 @@
-import { createSupabaseServerClient } from '../../utils/supabase/server';
+import { createClient } from '../../utils/supabase/server';
 import { AllRecipesCard } from '../../components/AllRecipesCard';
 import CategoryButtons from '../../components/CategoryButtons';
 import { SearchInput } from '../../components/SearchInput';
@@ -16,8 +16,14 @@ export default async function AllRecipesPage({
     page?: string;
   };
 }) {
-  const supabase = createSupabaseServerClient();
-  const { data: user, error } = await supabase.auth.getUser();
+  const supabase = createClient();
+  const user = await supabase.auth.getUser();
+  const { data, error, status } = await supabase
+    .from('profiles')
+    .select(`username`)
+    .eq('id', user.data.user?.id)
+    .single();
+  console.log(data);
   const query = searchParams?.query || '';
   const category = searchParams?.category || '';
   const currentPage = Number(searchParams?.page) || 1;
@@ -44,9 +50,9 @@ export default async function AllRecipesPage({
 
   return (
     <main className={cn('container mx-auto py-8 px-4 md:px-6')}>
-      {user?.user?.user_metadata.full_name ? (
+      {data?.username ? (
         <h3 className={cn('md:text-lg font-semibold text-foreground mb-2')}>
-          Hva vil du spise idag, {user?.user?.user_metadata.full_name}? 🍽
+          Hva vil du spise idag, {data?.username}? 🍽
         </h3>
       ) : (
         <h3 className={cn('md:text-lg font-semibold text-foreground mb-2')}>
