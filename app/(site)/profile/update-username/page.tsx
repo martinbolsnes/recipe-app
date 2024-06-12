@@ -1,7 +1,7 @@
 'use client';
 import { useCallback, useEffect, useState } from 'react';
 import { createClient } from '../../../utils/supabase/client';
-import { type User } from '@supabase/supabase-js';
+import type { User } from '@supabase/supabase-js';
 import { LoadingSpinner } from '@/app/components/LoadingSpinner';
 import { toast } from '@/components/ui/use-toast';
 import { Label } from '@/components/ui/label';
