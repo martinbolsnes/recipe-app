@@ -1,17 +1,14 @@
 'use client';
 import { useCallback, useEffect, useState } from 'react';
 import { createClient } from '../../../utils/supabase/client';
+import { type User } from '@supabase/supabase-js';
 import { LoadingSpinner } from '@/app/components/LoadingSpinner';
 import { toast } from '@/components/ui/use-toast';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
-interface User {
-  id: string;
-}
-
-export default function AccountForm({ user }: { user: User | null }) {
+export default function AccountForm({ user }: { user: User | undefined }) {
   const supabase = createClient();
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState<string | null>(null);
