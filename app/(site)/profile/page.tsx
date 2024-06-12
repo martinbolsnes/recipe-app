@@ -20,12 +20,12 @@ export default async function PrivatePage() {
   }
 
   return (
-    <main className={cn('flex-grow container mx-auto py-8 px-4 md:px-6')}>
+    <main className={cn('min-h-screen container mx-auto py-8 px-4 md:px-6')}>
       <div className={cn('flex items-center justify-between')}>
         <h1 className={cn('text-xl font-bold')}>Din profil</h1>
         <LogoutButton />
       </div>
-      <div className={cn('flex flex-col my-20 md:w-1/3')}>
+      <div className={cn('flex flex-col my-14 md:w-1/3')}>
         <div className={cn('space-y-4')}>
           <Avatar className='w-32 h-32'>
             <AvatarImage src={user?.user_metadata?.avatar_url} />
