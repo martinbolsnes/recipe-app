@@ -6,7 +6,7 @@ import LogoutButton from '@/app/components/Logout/Logout';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import AccountForm from './update-username/page';
+import AccountForm from '../../components/AccountForm';
 
 export default async function PrivatePage() {
   const supabase = createClient();
