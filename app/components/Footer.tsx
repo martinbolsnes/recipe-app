@@ -1,8 +1,11 @@
 import { cn } from '@/lib/utils';
 import { Utensils } from 'lucide-react';
 import Link from 'next/link';
+import { createClient } from '../utils/supabase/server';
 
-export const Footer = () => {
+export const Footer = async () => {
+  const supabase = createClient();
+  const user = await supabase.auth.getUser();
   return (
     <footer className='p-6 md:py-12 w-full bg-muted'>
       <div className='container max-w-7xl grid grid-cols-2 sm:grid-cols-3 gap-8 text-sm'>
@@ -26,19 +29,19 @@ export const Footer = () => {
             Kategorier
           </Link> */}
         </div>
-
-        {/* <div className='grid gap-1'>
-          <h3 className='font-semibold'>Følg oss</h3>
-          <Link href='#' prefetch={false}>
-            Instagram
-          </Link>
-          <Link href='#' prefetch={false}>
-            Facebook
-          </Link>
-          <Link href='#' prefetch={false}>
-            X
-          </Link>
-        </div> */}
+        {user ? (
+          <div className='grid gap-1'>
+            <Link href='/profile' prefetch={false}>
+              Profil
+            </Link>
+          </div>
+        ) : (
+          <div className='grid gap-1'>
+            <Link href='/login' prefetch={false}>
+              Logg inn
+            </Link>
+          </div>
+        )}
       </div>
     </footer>
   );
