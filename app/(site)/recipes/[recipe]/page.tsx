@@ -3,10 +3,9 @@ import {
   AlarmClock,
   ArrowLeftIcon,
   Squircle,
-  StarIcon,
   UtensilsCrossed,
 } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+
 import Image from 'next/image';
 import { Metadata } from 'next';
 
@@ -14,7 +13,6 @@ import { getRecipeBySlug } from '@/sanity/sanity.query';
 import type { RecipeType } from '@/types';
 
 import ConvertDialog from '@/app/components/ConvertDialog';
-import { RecomendedCard } from '@/app/components/RecomendedCard';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -102,80 +100,104 @@ export default async function Recipe({ params }: Props) {
               className={cn('w-full max-w-[800px]')}
               defaultValue='ingredients'
             >
-              <TabsList className='grid w-full grid-cols-2 border-b border-neutral-200'>
+              <TabsList
+                className={cn(
+                  'grid w-full grid-cols-2 border-b border-neutral-200'
+                )}
+              >
                 <TabsTrigger value='ingredients'>Ingredienser</TabsTrigger>
                 <TabsTrigger value='instructions'>Instruksjoner</TabsTrigger>
               </TabsList>
-              <TabsContent className='py-6' value='ingredients'>
-                <div className='grid gap-2'>
+              <TabsContent className={cn('py-6')} value='ingredients'>
+                <div className={cn('grid gap-2')}>
                   {recipe[0].ingredientsSubheaderOne ? (
-                    <p className='text-sm font-semibold'>
+                    <p className={cn('text-sm font-semibold')}>
                       {recipe[0].ingredientsSubheaderOne}
                     </p>
                   ) : null}
-                  <ul className='grid gap-1 text-sm pl-6'>
+                  <ul className={cn('grid gap-1 text-sm pl-6')}>
                     {recipe[0].ingredientsOne.map((ingredient, index) => (
                       <li key={index} className={cn('flex items-start')}>
-                        <Squircle className='w-4 h-4 mr-2 inline-block text-primary' />
+                        <Squircle
+                          className={cn(
+                            'w-4 h-4 mr-2 inline-block text-primary'
+                          )}
+                        />
                         <span className={cn('flex-1')}>{ingredient}</span>
                       </li>
                     ))}
                   </ul>
                   {recipe[0].ingredientsSubheaderTwo ? (
-                    <p className='text-sm font-semibold'>
+                    <p className={cn('text-sm font-semibold')}>
                       {recipe[0].ingredientsSubheaderTwo}
                     </p>
                   ) : null}
                   {recipe[0].ingredientsTwo ? (
-                    <ul className='grid gap-1 text-sm pl-6'>
+                    <ul className={cn('grid gap-1 text-sm pl-6')}>
                       {recipe[0].ingredientsTwo.map((ingredient, index) => (
                         <li key={index} className={cn('flex items-start')}>
-                          <Squircle className='w-4 h-4 mr-2 inline-block text-primary' />
+                          <Squircle
+                            className={cn(
+                              'w-4 h-4 mr-2 inline-block text-primary'
+                            )}
+                          />
                           <span className={cn('flex-1')}>{ingredient}</span>
                         </li>
                       ))}
                     </ul>
                   ) : null}
                   {recipe[0].ingredientsSubheaderThree ? (
-                    <p className='text-sm font-semibold'>
+                    <p className={cn('text-sm font-semibold')}>
                       {recipe[0].ingredientsSubheaderThree}
                     </p>
                   ) : null}
                   {recipe[0].ingredientsThree ? (
-                    <ul className='grid gap-1 text-sm pl-6'>
+                    <ul className={cn('grid gap-1 text-sm pl-6')}>
                       {recipe[0].ingredientsThree.map((ingredient, index) => (
                         <li key={index} className={cn('flex items-start')}>
-                          <Squircle className='w-4 h-4 mr-2 inline-block text-primary' />
+                          <Squircle
+                            className={cn(
+                              'w-4 h-4 mr-2 inline-block text-primary'
+                            )}
+                          />
                           <span className={cn('flex-1')}>{ingredient}</span>
                         </li>
                       ))}
                     </ul>
                   ) : null}
                   {recipe[0].ingredientsSubheaderFour ? (
-                    <p className='text-sm font-semibold'>
+                    <p className={cn('text-sm font-semibold')}>
                       {recipe[0].ingredientsSubheaderFour}
                     </p>
                   ) : null}
                   {recipe[0].ingredientsFour ? (
-                    <ul className='grid gap-1 text-sm pl-6'>
+                    <ul className={cn('grid gap-1 text-sm pl-6')}>
                       {recipe[0].ingredientsFour.map((ingredient, index) => (
                         <li key={index} className={cn('flex items-start')}>
-                          <Squircle className='w-4 h-4 mr-2 inline-block text-primary' />
+                          <Squircle
+                            className={cn(
+                              'w-4 h-4 mr-2 inline-block text-primary'
+                            )}
+                          />
                           <span className={cn('flex-1')}>{ingredient}</span>
                         </li>
                       ))}
                     </ul>
                   ) : null}
                   {recipe[0].ingredientsSubheaderFive ? (
-                    <p className='text-sm font-semibold'>
+                    <p className={cn('text-sm font-semibold')}>
                       {recipe[0].ingredientsSubheaderFive}
                     </p>
                   ) : null}
                   {recipe[0].ingredientsFive ? (
-                    <ul className='grid gap-1 text-sm pl-6'>
+                    <ul className={cn('grid gap-1 text-sm pl-6')}>
                       {recipe[0].ingredientsFive.map((ingredient, index) => (
                         <li key={index} className={cn('flex items-start')}>
-                          <Squircle className='w-4 h-4 mr-2 inline-block text-primary' />
+                          <Squircle
+                            className={cn(
+                              'w-4 h-4 mr-2 inline-block text-primary'
+                            )}
+                          />
                           <span className={cn('flex-1')}>{ingredient}</span>
                         </li>
                       ))}
@@ -183,76 +205,96 @@ export default async function Recipe({ params }: Props) {
                   ) : null}
                 </div>
               </TabsContent>
-              <TabsContent className='py-6' value='instructions'>
-                <div className='grid gap-2'>
-                  <ol className='grid gap-2 text-sm pl-6'>
+              <TabsContent className={cn('py-6')} value='instructions'>
+                <div className={cn('grid gap-2')}>
+                  <ol className={cn('grid gap-2 text-sm pl-6')}>
                     {recipe[0].instructionsSubheaderOne ? (
-                      <li className='text-sm font-semibold'>
+                      <li className={cn('text-sm font-semibold')}>
                         {recipe[0].instructionsSubheaderOne}
                       </li>
                     ) : null}
                     {recipe[0].instructionsOne.map((instruction, index) => (
                       <li key={index} className={cn('flex items-start')}>
-                        <Squircle className='w-4 h-4 mr-2 inline-block text-primary' />
+                        <Squircle
+                          className={cn(
+                            'w-4 h-4 mr-2 inline-block text-primary'
+                          )}
+                        />
                         <span className={cn('flex-1')}>{instruction}</span>
                       </li>
                     ))}
                   </ol>
                   {recipe[0].instructionsSubheaderTwo ? (
-                    <p className='text-sm font-semibold'>
+                    <p className={cn('text-sm font-semibold')}>
                       {recipe[0].instructionsSubheaderTwo}
                     </p>
                   ) : null}
                   {recipe[0].instructionsTwo ? (
-                    <ol className='grid gap-2 text-sm pl-6'>
+                    <ol className={cn('grid gap-2 text-sm pl-6')}>
                       {recipe[0].instructionsTwo.map((instruction, index) => (
                         <li key={index} className={cn('flex items-start')}>
-                          <Squircle className='w-4 h-4 mr-2 inline-block text-primary' />
+                          <Squircle
+                            className={cn(
+                              'w-4 h-4 mr-2 inline-block text-primary'
+                            )}
+                          />
                           <span className={cn('flex-1')}>{instruction}</span>
                         </li>
                       ))}
                     </ol>
                   ) : null}
                   {recipe[0].instructionsSubheaderThree ? (
-                    <p className='text-sm font-semibold'>
+                    <p className={cn('text-sm font-semibold')}>
                       {recipe[0].instructionsSubheaderThree}
                     </p>
                   ) : null}
                   {recipe[0].instructionsThree ? (
-                    <ol className='grid gap-2 text-sm pl-6'>
+                    <ol className={cn('grid gap-2 text-sm pl-6')}>
                       {recipe[0].instructionsThree.map((instruction, index) => (
                         <li key={index} className={cn('flex items-start')}>
-                          <Squircle className='w-4 h-4 mr-2 inline-block text-primary' />
+                          <Squircle
+                            className={cn(
+                              'w-4 h-4 mr-2 inline-block text-primary'
+                            )}
+                          />
                           <span className={cn('flex-1')}>{instruction}</span>
                         </li>
                       ))}
                     </ol>
                   ) : null}
                   {recipe[0].instructionsSubheaderFour ? (
-                    <p className='text-sm font-semibold'>
+                    <p className={cn('text-sm font-semibold')}>
                       {recipe[0].instructionsSubheaderFour}
                     </p>
                   ) : null}
                   {recipe[0].instructionsFour ? (
-                    <ol className='grid gap-2 text-sm pl-6'>
+                    <ol className={cn('grid gap-2 text-sm pl-6')}>
                       {recipe[0].instructionsFour.map((instruction, index) => (
                         <li key={index} className={cn('flex items-start')}>
-                          <Squircle className='w-4 h-4 mr-2 inline-block text-primary' />
+                          <Squircle
+                            className={cn(
+                              'w-4 h-4 mr-2 inline-block text-primary'
+                            )}
+                          />
                           <span className={cn('flex-1')}>{instruction}</span>
                         </li>
                       ))}
                     </ol>
                   ) : null}
                   {recipe[0].instructionsSubheaderFive ? (
-                    <p className='text-sm font-semibold'>
+                    <p className={cn('text-sm font-semibold')}>
                       {recipe[0].instructionsSubheaderFive}
                     </p>
                   ) : null}
                   {recipe[0].instructionsFive ? (
-                    <ol className='grid gap-2 text-sm pl-6'>
+                    <ol className={cn('grid gap-2 text-sm pl-6')}>
                       {recipe[0].instructionsFive.map((instruction, index) => (
                         <li key={index} className={cn('flex items-start')}>
-                          <Squircle className='w-4 h-4 mr-2 inline-block text-primary' />
+                          <Squircle
+                            className={cn(
+                              'w-4 h-4 mr-2 inline-block text-primary'
+                            )}
+                          />
                           <span className={cn('flex-1')}>{instruction}</span>
                         </li>
                       ))}

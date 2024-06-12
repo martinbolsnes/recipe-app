@@ -1,16 +1,18 @@
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 import Link from 'next/link';
 import { sanityFetch } from '@/sanity/sanity.client';
 import { heroQuery } from '@/sanity/sanity.query';
 import type { HeroContentType } from '@/types';
+import { createClient } from '../utils/supabase/server';
 import FeaturedSection from '../components/FeaturedSection';
 import { Utensils } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import NewRecipesSection from '../components/NewRecipesSection';
 
 export default async function LandingPage() {
+  const supabase = createClient();
+  const user = await supabase.auth.getUser();
   const hero: HeroContentType[] = await sanityFetch({
     query: heroQuery,
     tags: ['hero'],
@@ -62,15 +64,27 @@ export default async function LandingPage() {
                   'flex w-full items-center justify-center space-x-4 py-4 md:pb-10'
                 )}
               >
-                <Link href={'/sign-up'}>
-                  <Button
-                    variant='default'
-                    size='lg'
-                    className={cn('font-bold')}
-                  >
-                    Kom i gang
-                  </Button>
-                </Link>
+                {user ? (
+                  <Link href={'/recipes'}>
+                    <Button
+                      variant='default'
+                      size='lg'
+                      className={cn('font-bold')}
+                    >
+                      Kom i gang
+                    </Button>
+                  </Link>
+                ) : (
+                  <Link href={'/login'}>
+                    <Button
+                      variant='default'
+                      size='lg'
+                      className={cn('font-bold')}
+                    >
+                      Kom i gang
+                    </Button>
+                  </Link>
+                )}
                 <Link href='/recipes'>
                   <Button
                     variant='outline'

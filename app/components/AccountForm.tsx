@@ -7,6 +7,7 @@ import { toast } from '@/components/ui/use-toast';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 export default function AccountForm({ user }: { user: User | null }) {
   const supabase = createClient();
@@ -77,6 +78,7 @@ export default function AccountForm({ user }: { user: User | null }) {
       <div>
         <Label htmlFor='username'>Brukernavn</Label>
         <Input
+          className={cn('text-base')}
           id='username'
           type='text'
           value={username || ''}
@@ -87,11 +89,15 @@ export default function AccountForm({ user }: { user: User | null }) {
       <div>
         <Button
           variant='default'
-          className='mt-4'
+          className={cn('mt-4')}
           onClick={() => updateProfile({ username })}
           disabled={loading}
         >
-          {loading ? <LoadingSpinner /> : 'Oppdater brukernavn'}
+          {loading ? (
+            <LoadingSpinner fill='fill-neutral-900' />
+          ) : (
+            'Oppdater brukernavn'
+          )}
         </Button>
       </div>
     </div>

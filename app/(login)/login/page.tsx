@@ -3,18 +3,21 @@
 import { UtensilsIcon } from 'lucide-react';
 import LoginButtonGithub from '@/app/components/Login/LoginGithub';
 import LoginButtonGoogle from '@/app/components/Login/LoginGoogle';
+import { cn } from '@/lib/utils';
 
 export default function LoginPage() {
   return (
-    <div className='container mx-auto max-w-md space-y-6 py-12'>
-      <div className='space-y-2 text-center'>
-        <h1 className='text-3xl font-bold flex items-center justify-center'>
-          <UtensilsIcon className='mr-2 h-6 w-6' />
+    <div className={cn('container mx-auto max-w-md space-y-6 py-12 w-full')}>
+      <div className={cn('space-y-2 text-center')}>
+        <h1
+          className={cn('text-3xl font-bold flex items-center justify-center')}
+        >
+          <UtensilsIcon className={cn('mr-2 h-6 w-6')} />
           MunchMate
         </h1>
-        <p className='text-gray-500 dark:text-gray-400'>
-          Logg inn for å begynne. Hvis dette er første gang du logger inn, vil
-          en bruker bli opprettet for deg.
+        <p className={cn('text-foreground/60')}>
+          Hvis dette er første gang du logger inn, vil en bruker bli opprettet
+          for deg.
         </p>
       </div>
       <LoginButtonGoogle />

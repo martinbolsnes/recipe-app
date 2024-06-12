@@ -20,7 +20,7 @@ export default async function PrivatePage() {
   }
 
   return (
-    <main className={cn('container mx-auto py-8 px-4 md:px-6 h-screen')}>
+    <main className={cn('flex-grow container mx-auto py-8 px-4 md:px-6')}>
       <div className={cn('flex items-center justify-between')}>
         <h1 className={cn('text-xl font-bold')}>Din profil</h1>
         <LogoutButton />
@@ -33,11 +33,20 @@ export default async function PrivatePage() {
           </Avatar>
           <div className={cn('space-y-2')}>
             <Label htmlFor='name'>Navn</Label>
-            <Input name='name' value={user?.user_metadata?.name} disabled />
+            <Input
+              className={cn('text-base')}
+              name='name'
+              value={user?.user_metadata?.name}
+              disabled
+            />
           </div>
           <div className={cn('space-y-2')}>
             <Label htmlFor='email'>Mail</Label>
-            <Input value={user?.user_metadata?.email} disabled />
+            <Input
+              className={cn('text-base')}
+              value={user?.user_metadata?.email}
+              disabled
+            />
           </div>
 
           <AccountForm user={user} />
