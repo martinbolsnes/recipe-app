@@ -1,9 +1,9 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { createSupabaseServerClient } from '../utils/supabase/server';
+import { createClient } from '../utils/supabase/server';
 import Link from 'next/link';
 
 export default async function AvatarComponent() {
-  const supabase = createSupabaseServerClient();
+  const supabase = createClient();
   const { data: user, error } = await supabase.auth.getUser();
 
   return (
