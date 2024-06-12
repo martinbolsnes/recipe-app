@@ -57,6 +57,9 @@ export const Header = async () => {
               <SheetTrigger asChild>
                 <Link href='/recipes'>Oppskrifter</Link>
               </SheetTrigger>
+              <SheetTrigger asChild>
+                <Link href='/about'>Om oss</Link>
+              </SheetTrigger>
               <>
                 <Separator />
                 {user ? (
