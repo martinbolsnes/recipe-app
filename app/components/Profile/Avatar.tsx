@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { createClient } from '../utils/supabase/server';
+import { createClient } from '../../utils/supabase/server';
 import Link from 'next/link';
 import {
   Tooltip,
