@@ -23,7 +23,6 @@ export default async function AllRecipesPage({
     .select(`username`)
     .eq('id', user.data.user?.id)
     .single();
-  console.log(data);
   const query = searchParams?.query || '';
   const category = searchParams?.category || '';
   const currentPage = Number(searchParams?.page) || 1;
