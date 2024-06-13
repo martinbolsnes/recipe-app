@@ -36,7 +36,7 @@ export default async function FeaturedSection() {
                 'max-w-[900px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'
               )}
             >
-              Noen av våre beste oppskrifter som er lagt til på MunchMate
+              Noen av våre beste oppskrifter som er lagt til på Munchmate
             </p>
           </div>
         </div>

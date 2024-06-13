@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Comfortaa as FontSans } from 'next/font/google';
+import { Urbanist } from 'next/font/google';
 import '../globals.css';
 
 import { cn } from '@/lib/utils';
@@ -12,8 +13,13 @@ const fontSans = FontSans({
   variable: '--font-sans',
 });
 
+const fontUrbanist = Urbanist({
+  subsets: ['latin'],
+  variable: '--font-urbanist',
+});
+
 export const metadata: Metadata = {
-  title: 'MunchMate',
+  title: 'munchmate',
   description: 'Your favorite recipes in one place',
 };
 
@@ -27,7 +33,8 @@ export default function SiteLayout({
       <body
         className={cn(
           'min-h-screen bg-background font-sans antialiased overflow-x-hidden',
-          fontSans.variable
+          fontSans.variable,
+          fontUrbanist.variable
         )}
       >
         <Header />

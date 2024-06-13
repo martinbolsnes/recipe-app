@@ -33,8 +33,11 @@ export default async function LandingPage() {
               'flex flex-col items-center justify-center space-y-8 text-center'
             )}
           >
-            <Badge variant='secondary'>
-              <Utensils className={cn('w-3 h-3 mr-1')} /> MunchMate
+            <Badge
+              variant='secondary'
+              className='font-urbanist font-medium text-sm'
+            >
+              <Utensils className={cn('w-3 h-3 mr-1')} /> munchmate
             </Badge>
             <div
               className={cn(

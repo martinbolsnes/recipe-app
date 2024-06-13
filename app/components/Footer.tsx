@@ -43,8 +43,12 @@ export const Footer = async () => {
       <div className='container mt-24'>
         <Link href='/'>
           <h3 className='font-semibold flex items-center text-lg'>
-            <Utensils className={cn('w-4 h-4 text-primary mr-2')} />
-            MunchMate
+            <Utensils
+              className={cn(
+                'w-4 h-4 text-primary mr-2 font-urbanist font-medium'
+              )}
+            />
+            munchmate
           </h3>
         </Link>
         <p className='text-sm mt-4'>

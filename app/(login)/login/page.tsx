@@ -10,10 +10,12 @@ export default function LoginPage() {
     <div className={cn('container mx-auto max-w-md space-y-6 py-12 w-full')}>
       <div className={cn('space-y-2 text-center')}>
         <h1
-          className={cn('text-3xl font-bold flex items-center justify-center')}
+          className={cn(
+            'text-3xl font-medium font-urbanist flex items-center justify-center pb-4'
+          )}
         >
           <UtensilsIcon className={cn('mr-2 h-6 w-6')} />
-          MunchMate
+          munchmate
         </h1>
         <p className={cn('text-foreground/60')}>
           Hvis dette er første gang du logger inn, vil en bruker bli opprettet

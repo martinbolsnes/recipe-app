@@ -28,7 +28,9 @@ export const Header = async () => {
       <div>
         <Link href='/' className={cn('flex items-center gap-2')}>
           <Utensils className={cn('w-4 h-4 text-primary')} />
-          <h1 className={cn('text-lg font-bold')}>MunchMate</h1>
+          <h1 className={cn('text-lg sm:text-xl font-medium font-urbanist')}>
+            munchmate
+          </h1>
         </Link>
       </div>
       <div className={cn('flex items-center gap-4')}>
@@ -49,7 +51,9 @@ export const Header = async () => {
             <SheetHeader className={cn('flex')}>
               <Link href='/' className={cn('flex items-center gap-2')}>
                 <Utensils className={cn('w-4 h-4 text-primary')} />
-                <h1 className={cn('text-lg font-bold')}>MunchMate</h1>
+                <h1 className={cn('text-lg font-medium font-urbanist')}>
+                  munchmate
+                </h1>
               </Link>
             </SheetHeader>
             <div className={cn('flex flex-col items-end gap-4 py-6 text-lg')}>

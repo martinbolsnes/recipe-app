@@ -19,7 +19,7 @@ export default function AboutPage() {
                 Vi er din oppskrift på suksess
               </h1>
               <p className={cn('md:text-xl text-foreground')}>
-                MunchMate er en app for matentusiaster som ønsker å utforske nye
+                Munchmate er en app for matentusiaster som ønsker å utforske nye
                 smaker og oppleve spennende retter. Søk etter oppskrifter basert
                 på matkategorier og bli inspirert til å lage deilige måltider.
                 <br />
@@ -86,7 +86,7 @@ export default function AboutPage() {
                   </h2>
                   <p className={cn('text-foreground mt-4 md:text-xl')}>
                     Få tilgang til nyttige verktøy som måleenhetskonvertering.
-                    Med MunchMate har du alt du trenger for å lage deilige
+                    Med Munchmate har du alt du trenger for å lage deilige
                     måltider.
                   </p>
                 </div>
@@ -107,7 +107,7 @@ export default function AboutPage() {
                     Brukervennlig opplevelse
                   </h2>
                   <p className={cn('text-foreground mt-4 md:text-xl')}>
-                    MunchMate er designet for å være enkel og intuitiv å bruke.
+                    Munchmate er designet for å være enkel og intuitiv å bruke.
                     Enten du er en erfaren kokk eller en nybegynner, vil du
                     elske vår app.
                   </p>

@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'MunchMate Studio',
+  title: 'munchmate Studio',
   description: 'Manage your recipes and ingredients',
 };
 
