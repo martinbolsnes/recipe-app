@@ -16,6 +16,7 @@ import { categoriesQuery } from '@/sanity/sanity.query';
 import { client } from '@/sanity/sanity.client';
 import type { CategoryType } from '@/types';
 import { useEffect, useState } from 'react';
+import { LoadingSpinner } from '../LoadingSpinner';
 
 const icons = {
   kjøtt: <Beef className={cn('w-4 h-4 mr-2')} />,
@@ -30,14 +31,17 @@ const icons = {
 export default function CategoryButtons() {
   const [categories, setCategories] = useState<CategoryType[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('alle');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
   useEffect(() => {
     async function fetchData() {
+      setIsLoading(true);
       const fetchedCategories = await client.fetch(categoriesQuery);
       setCategories(fetchedCategories);
+      setIsLoading(false);
     }
 
     fetchData();
@@ -60,8 +64,18 @@ export default function CategoryButtons() {
         size='sm'
         variant={selectedCategory === 'alle' ? 'default' : 'outline'}
         onClick={() => handleCategoryClick('alle')}
+        disabled={isLoading}
       >
-        {icons.alle}
+        {isLoading ? (
+          <LoadingSpinner
+            fill='fill-neutral-900'
+            height='h-4'
+            width='w-4'
+            margin='mr-2'
+          />
+        ) : (
+          icons.alle
+        )}
         Alle
       </Button>
 
@@ -73,8 +87,13 @@ export default function CategoryButtons() {
             size='sm'
             variant={selectedCategory === categoryName ? 'default' : 'outline'}
             onClick={() => handleCategoryClick(categoryName)}
+            disabled={isLoading}
           >
-            {icons[category.icon as keyof typeof icons]}
+            {isLoading ? (
+              <LoadingSpinner width='w-4' height='h-4' margin='mr-2' />
+            ) : (
+              icons[category.icon as keyof typeof icons]
+            )}
             {category.name}
           </Button>
         );
