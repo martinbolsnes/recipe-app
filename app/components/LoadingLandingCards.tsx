@@ -13,7 +13,7 @@ export const LoadingLandingCards = () => {
           <div className={cn('grid gap-6')}>
             <Skeleton
               className={cn(
-                'h-[200px] w-[300px] aspect-viedo rounded-xl object-cover'
+                'h-[200px] w-[300px] aspect-video rounded-xl object-cover'
               )}
             />
             <div className={cn('grid gap-4')}>
