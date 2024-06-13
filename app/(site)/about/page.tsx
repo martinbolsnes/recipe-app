@@ -75,11 +75,7 @@ export default function AboutPage() {
               <div
                 className={cn('grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-16')}
               >
-                <Weight
-                  className={cn(
-                    'mx-auto w-24 h-24 lg:w-32 lg:h-32 text-primary'
-                  )}
-                />
+                <Weight className={cn('mx-auto w-24 h-24 lg:w-32 lg:h-32')} />
                 <div>
                   <h2
                     className={cn(
