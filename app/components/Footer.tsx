@@ -11,7 +11,7 @@ export const Footer = async () => {
     return new Date().getFullYear();
   };
   return (
-    <footer className='p-6 md:py-12 w-full bg-muted'>
+    <footer className='pr-6 pt-6 pb-6 md:py-12 w-full bg-muted'>
       <div className='container grid grid-cols-2 sm:grid-cols-3 gap-8 text-sm mt-4'>
         <div className='grid gap-2'>
           <h3 className='font-semibold text-base'>Info</h3>
