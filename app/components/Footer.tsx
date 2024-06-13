@@ -12,10 +12,10 @@ export const Footer = async () => {
   };
   return (
     <footer className='p-6 md:py-12 w-full bg-muted'>
-      <div className='container max-w-7xl grid grid-cols-2 sm:grid-cols-3 gap-8 text-sm'>
-        <div className='grid gap-1'>
+      <div className='container grid grid-cols-2 sm:grid-cols-3 gap-8 text-sm'>
+        <div className='grid gap-2'>
           <Link href='/'>
-            <h3 className='font-semibold flex'>
+            <h3 className='font-semibold flex items-center text-lg'>
               <Utensils className={cn('w-4 h-4 text-primary mr-2')} />
               MunchMate
             </h3>
@@ -24,8 +24,8 @@ export const Footer = async () => {
             Om oss
           </Link>
         </div>
-        <div className='grid gap-1'>
-          <h3 className='font-semibold'>Oppskrifter</h3>
+        <div className='grid gap-2'>
+          <h3 className='font-semibold text-base'>Oppskrifter</h3>
           <Link href='/recipes' prefetch={false}>
             Alle Oppskrifter
           </Link>
@@ -34,18 +34,18 @@ export const Footer = async () => {
           </Link> */}
         </div>
         {user?.user ? (
-          <div className='grid gap-1'>
-            <h3 className='font-semibold'>Konto</h3>
+          <div className='grid gap-2'>
+            <h3 className='font-semibold text-base'>Konto</h3>
             <Link href='/profile'>Profil</Link>
           </div>
         ) : (
-          <div className='grid gap-1'>
-            <h3 className='font-semibold'>Konto</h3>
+          <div className='grid gap-2'>
+            <h3 className='font-semibold text-base'>Konto</h3>
             <Link href='/login'>Logg inn</Link>
           </div>
         )}
       </div>
-      <div className='mt-24 text-center'>
+      <div className='container mt-24'>
         <p className='text-sm'>
           &copy; {getCurrentYear()} MunchMate. All rights reserved.
         </p>

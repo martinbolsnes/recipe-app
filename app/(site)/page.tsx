@@ -46,14 +46,14 @@ export default async function LandingPage() {
               >
                 <h1
                   className={cn(
-                    'text-center text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]'
+                    'text-4xl font-bold tracking-tighter md:text-5xl'
                   )}
                 >
                   {hero[0].name}
                 </h1>
                 <p
                   className={cn(
-                    'max-w-[750px] text-center text-lg font-light text-foreground'
+                    'max-w-[750px] text-center md:text-xl text-foreground'
                   )}
                 >
                   {hero[0].description}
