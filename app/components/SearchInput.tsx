@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { Search } from 'lucide-react';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+import { LoadingSpinner } from './LoadingSpinner';
 
 export const SearchInput = ({ placeholder }: { placeholder: string }) => {
   const searchParams = useSearchParams();
