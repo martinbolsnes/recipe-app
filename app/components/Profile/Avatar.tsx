@@ -7,6 +7,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { CircleUserRound } from 'lucide-react';
 
 export default async function AvatarComponent() {
   const supabase = createClient();
@@ -22,7 +23,9 @@ export default async function AvatarComponent() {
                 src={user.user?.user_metadata?.avatar_url}
                 alt='User avatar'
               />
-              <AvatarFallback>MM</AvatarFallback>
+              <AvatarFallback>
+                <CircleUserRound strokeWidth={2} />
+              </AvatarFallback>
             </Avatar>
           </Link>
         </TooltipTrigger>

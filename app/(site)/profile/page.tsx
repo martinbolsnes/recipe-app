@@ -28,7 +28,9 @@ export default async function PrivatePage() {
         <div className={cn('space-y-4')}>
           <Avatar className='w-32 h-32'>
             <AvatarImage src={user?.user_metadata?.avatar_url} />
-            <AvatarFallback>{user?.user_metadata?.name}</AvatarFallback>
+            <AvatarFallback className='flex items-center justify-center text-center'>
+              {user?.user_metadata?.name}
+            </AvatarFallback>
           </Avatar>
           <div className={cn('space-y-2')}>
             <Label htmlFor='name'>Navn</Label>
