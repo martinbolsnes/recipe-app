@@ -5,13 +5,10 @@ import {
   Squircle,
   UtensilsCrossed,
 } from 'lucide-react';
-
 import Image from 'next/image';
 import { Metadata } from 'next';
-
 import { getRecipeBySlug } from '@/sanity/sanity.query';
 import type { RecipeType } from '@/types';
-
 import ConvertDialog from '@/app/components/ConvertDialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
