@@ -11,7 +11,7 @@ export default function LoginPage() {
       <div className={cn('space-y-2 text-center')}>
         <h1
           className={cn(
-            'text-3xl font-medium font-urbanist flex items-center justify-center pb-4'
+            'text-4xl font-medium font-urbanist flex items-center justify-center pb-4'
           )}
         >
           <UtensilsIcon className={cn('mr-2 h-6 w-6')} />
