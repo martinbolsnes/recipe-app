@@ -4,18 +4,20 @@ interface LoadingSpinnerProps {
   width?: string;
   height?: string;
   fill?: string;
+  margin?: string;
 }
 
 export function LoadingSpinner({
   width = 'w-6',
   height = 'h-6',
   fill = 'fill-green-500',
+  margin = 'm-0',
 }: LoadingSpinnerProps) {
   return (
     <div role='status'>
       <svg
         aria-hidden='true'
-        className={`${width} ${height} text-gray-200 animate-spin dark:text-gray-600 ${fill}`}
+        className={`${width} ${height} ${margin} text-neutral-200 animate-spin ${fill}`}
         viewBox='0 0 100 101'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
