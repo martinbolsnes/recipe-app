@@ -11,6 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import NewRecipesSection from '../components/Recipes/NewRecipesSection';
 import { Suspense } from 'react';
 import { LoadingLandingCards } from '../components/LoadingLandingCards';
+import { AboutSection } from '../components/About/AboutSection';
 
 export default async function LandingPage() {
   const supabase = createClient();
@@ -110,6 +111,7 @@ export default async function LandingPage() {
       <Suspense fallback={<LoadingLandingCards />}>
         <NewRecipesSection />
       </Suspense>
+      <AboutSection />
     </main>
   );
 }
