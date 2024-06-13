@@ -12,14 +12,9 @@ export const Footer = async () => {
   };
   return (
     <footer className='p-6 md:py-12 w-full bg-muted'>
-      <div className='container grid grid-cols-2 sm:grid-cols-3 gap-8 text-sm'>
+      <div className='container grid grid-cols-2 sm:grid-cols-3 gap-8 text-sm mt-4'>
         <div className='grid gap-2'>
-          <Link href='/'>
-            <h3 className='font-semibold flex items-center text-lg'>
-              <Utensils className={cn('w-4 h-4 text-primary mr-2')} />
-              MunchMate
-            </h3>
-          </Link>
+          <h3 className='font-semibold text-base'>Info</h3>
           <Link href='/about' prefetch={false}>
             Om oss
           </Link>
@@ -46,8 +41,14 @@ export const Footer = async () => {
         )}
       </div>
       <div className='container mt-24'>
-        <p className='text-sm'>
-          &copy; {getCurrentYear()} MunchMate. All rights reserved.
+        <Link href='/'>
+          <h3 className='font-semibold flex items-center text-lg'>
+            <Utensils className={cn('w-4 h-4 text-primary mr-2')} />
+            MunchMate
+          </h3>
+        </Link>
+        <p className='text-sm mt-4'>
+          &copy; {getCurrentYear()} Martin Bolsønes. All rights reserved.
         </p>
       </div>
     </footer>
