@@ -74,9 +74,16 @@ export default async function AllRecipesPage({
         <div
           className={cn('grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6')}
         >
-          {filteredRecipes.map((recipe) => (
-            <AllRecipesCard key={recipe._id} recipe={recipe} />
-          ))}
+          {filteredRecipes.length > 0 ? (
+            filteredRecipes.map((recipe) => (
+              <AllRecipesCard key={recipe._id} recipe={recipe} />
+            ))
+          ) : (
+            <p className={cn('mt-6')}>
+              Her var det visst ingenting enda 😬 Vi legger snart ut nye
+              oppskrifter.
+            </p>
+          )}
         </div>
       </section>
     </main>
