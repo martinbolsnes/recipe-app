@@ -1,12 +1,11 @@
 import { redirect } from 'next/navigation';
-
 import { createClient } from '../../utils/supabase/server';
 import { cn } from '@/lib/utils';
 import LogoutButton from '@/app/components/Logout/Logout';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import AccountForm from '../../components/AccountForm';
+import AccountForm from '../../components/Profile/AccountForm';
 
 export default async function PrivatePage() {
   const supabase = createClient();

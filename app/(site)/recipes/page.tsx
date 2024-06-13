@@ -1,6 +1,6 @@
 import { createClient } from '../../utils/supabase/server';
-import { AllRecipesCard } from '../../components/AllRecipesCard';
-import CategoryButtons from '../../components/CategoryButtons';
+import { AllRecipesCard } from '../../components/Recipes/AllRecipesCard';
+import CategoryButtons from '../../components/Recipes/CategoryButtons';
 import { SearchInput } from '../../components/SearchInput';
 import { cn } from '@/lib/utils';
 import { sanityFetch } from '@/sanity/sanity.client';

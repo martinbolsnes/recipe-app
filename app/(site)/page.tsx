@@ -8,7 +8,7 @@ import { createClient } from '../utils/supabase/server';
 import FeaturedSection from '../components/FeaturedSection';
 import { Utensils } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import NewRecipesSection from '../components/NewRecipesSection';
+import NewRecipesSection from '../components/Recipes/NewRecipesSection';
 
 export default async function LandingPage() {
   const supabase = createClient();
