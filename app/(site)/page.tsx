@@ -9,6 +9,8 @@ import FeaturedSection from '../components/FeaturedSection';
 import { Utensils } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import NewRecipesSection from '../components/Recipes/NewRecipesSection';
+import { Suspense } from 'react';
+import { LoadingLandingCards } from '../components/LoadingLandingCards';
 
 export default async function LandingPage() {
   const supabase = createClient();
@@ -96,22 +98,15 @@ export default async function LandingPage() {
                 </Link>
               </div>
             </div>
-            {/* <Image
-              priority
-              alt={hero[0].image.alt}
-              className={cn(
-                'mx-auto aspect-square overflow-hidden rounded-xl object-cover sm:w-1/2 lg:order-last'
-              )}
-              height='250'
-              src={hero[0].image.image || '/images/placeholder.jpg'}
-              width='300'
-              style={{ aspectRatio: '300/250', objectFit: 'cover' }}
-            /> */}
           </div>
         </div>
       </section>
-      <FeaturedSection />
-      <NewRecipesSection />
+      <Suspense fallback={<LoadingLandingCards />}>
+        <FeaturedSection />
+      </Suspense>
+      <Suspense fallback={<LoadingLandingCards />}>
+        <NewRecipesSection />
+      </Suspense>
     </main>
   );
 }
