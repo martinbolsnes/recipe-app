@@ -5,7 +5,7 @@ import { sanityFetch } from '@/sanity/sanity.client';
 import { heroQuery } from '@/sanity/sanity.query';
 import type { HeroContentType } from '@/types';
 import { createClient } from '../utils/supabase/server';
-import FeaturedSection from '../components/FeaturedSection';
+import FeaturedSection from '../components/Recipes/FeaturedSection';
 import { Utensils } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import NewRecipesSection from '../components/Recipes/NewRecipesSection';
