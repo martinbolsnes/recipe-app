@@ -99,6 +99,7 @@ export default function ConvertDrawer() {
                     }
                   }}
                 >
+                  <option value='Velg enhet'>Velg enhet</option>
                   {units.map((unit) => (
                     <option key={unit} value={unit}>
                       {unit.charAt(0).toUpperCase() + unit.slice(1)}
@@ -112,6 +113,7 @@ export default function ConvertDrawer() {
                   value={toUnit}
                   onChange={(e) => setToUnit(e.target.value)}
                 >
+                  <option value='Velg enhet'>Velg enhet</option>
                   {validToUnits.map((unit) => (
                     <option key={unit} value={unit}>
                       {unit.charAt(0).toUpperCase() + unit.slice(1)}
