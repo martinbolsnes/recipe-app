@@ -23,7 +23,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const { recipe: slug } = await params;
-  const recipe: RecipeType[] = await getRecipeBySlug(slug);
+  const recipe: RecipeType[] = await getRecipeBySlug(slug).then((res) => res);
 
   return {
     title: `${recipe[0].name}`,
