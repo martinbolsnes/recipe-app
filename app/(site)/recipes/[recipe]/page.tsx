@@ -14,13 +14,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-type Props = {
-  params: {
-    recipe: string;
-  };
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { recipe: string };
+}): Promise<Metadata> {
   const slug = params.recipe;
   const recipe: RecipeType[] = await getRecipeBySlug(slug);
 
@@ -35,7 +33,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function Recipe({ params }: Props) {
+export default async function Recipe({
+  params,
+}: {
+  params: { recipe: string };
+}) {
   const slug = params.recipe;
   const recipe: RecipeType[] = await getRecipeBySlug(slug);
   return (
