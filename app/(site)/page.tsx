@@ -8,13 +8,13 @@ import { createClient } from '../utils/supabase/server';
 import FeaturedSection from '../components/Recipes/FeaturedSection';
 import { Utensils } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import NewRecipesSection from '../components/Recipes/NewRecipesSection';
-import { Suspense } from 'react';
+/* import NewRecipesSection from '../components/Recipes/NewRecipesSection';
+ */ import { Suspense } from 'react';
 import { LoadingLandingCards } from '../components/LoadingLandingCards';
 import { AboutSection } from '../components/About/AboutSection';
 
 export default async function LandingPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const user = await supabase.auth.getUser();
   const hero: HeroContentType[] = await sanityFetch({
     query: heroQuery,
@@ -108,9 +108,9 @@ export default async function LandingPage() {
       <Suspense fallback={<LoadingLandingCards />}>
         <FeaturedSection />
       </Suspense>
-      <Suspense fallback={<LoadingLandingCards />}>
+      {/* <Suspense fallback={<LoadingLandingCards />}>
         <NewRecipesSection />
-      </Suspense>
+      </Suspense> */}
       <AboutSection />
     </main>
   );
