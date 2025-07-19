@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+/* import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { newRecipesQuery, recipeQuery } from '@/sanity/sanity.query';
 import type { RecipeType } from '@/types';
@@ -55,30 +55,30 @@ export default async function NewRecipesSection() {
             >
               <div className={cn('relative')}>
                 <Image
-                  alt={recipe.image.alt}
+                  alt={recipe.image.alt || ''}
                   className={cn('w-full h-42 aspect-video object-cover')}
                   height='200'
-                  src={recipe.image.image}
+                  src={recipe.image.image || ''}
                   width='300'
                 />
-                {/* <Button
+                <Button
                   className='absolute top-2 right-2 bg-background rounded-full'
                   size='icon'
                   variant='outline'
                 >
                   <HeartIcon className='w-5 h-5  stroke-rose-600 stroke-1 fill-rose-400' />
-                </Button> */}
+                </Button>
               </div>
               <div className={cn('space-y-2 p-4')}>
                 <h3 className={cn('text-xl font-bold')}>{recipe.name}</h3>
                 <p className={cn('text-foreground/60')}>
                   {recipe.shortDescription}
                 </p>
-                {/* <div className='flex flex-wrap gap-2'>
+                <div className='flex flex-wrap gap-2'>
                   <div className='bg-amber-100 px-2 py-1 rounded-sm text-sm font-semibold text-amber-600'>
                     New
                   </div>
-                </div> */}
+                </div>
               </div>
             </Link>
           ))}
@@ -87,3 +87,4 @@ export default async function NewRecipesSection() {
     </section>
   );
 }
+ */
