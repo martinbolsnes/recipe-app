@@ -6,12 +6,12 @@ export default function Loading() {
     <div className={cn('container mx-auto py-8 px-4 md:px-6')}>
       <div className={cn('flex items-center justify-between mb-4')}>
         <div className={cn('flex items-center gap-4')}>
-          <Skeleton className={cn('h-8 w-[500px]')} />
+          <Skeleton className={cn('h-8 w-[300px]')} />
         </div>
       </div>
       <div className={cn('mb-8')}>
         <div className={cn('flex items-center justify-between mb-4')}>
-          <Skeleton className={cn('h-8 w-[500px]')} />
+          <Skeleton className={cn('h-8 w-[300px]')} />
         </div>
       </div>
       <div
