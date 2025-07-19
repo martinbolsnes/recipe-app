@@ -24,35 +24,43 @@ const icons = {
   alle: <ListPlus className={cn('w-4 h-4 mr-2')} />,
 };
 
-export default async function Component() {
+export default async function Categories() {
   const categories: CategoryType[] = await sanityFetch({
     query: categoriesQuery,
     tags: ['categories'],
   });
   return (
     <main>
-      <section className='w-full py-12 md:py-16 lg:py-20'>
-        <div className='container grid gap-6 md:gap-8 px-4 md:px-6'>
-          <div className='flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8'>
-            <h1 className='text-2xl font-bold tracking-tight'>
+      <section className={cn('w-full py-12 md:py-16 lg:py-20')}>
+        <div className={cn('container grid gap-6 md:gap-8 px-4 md:px-6')}>
+          <div
+            className={cn(
+              'flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8'
+            )}
+          >
+            <h1 className={cn('text-2xl font-bold tracking-tight')}>
               Utforsk våre kategorier
             </h1>
-            <p className='text-gray-500 dark:text-gray-400'>
+            <p className={cn('text-foreground/60')}>
               Oppdag nye oppskrifter og inspirasjon fra våre kategorier
             </p>
           </div>
-          <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 xl:gap-8'>
+          <div
+            className={cn(
+              'grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 xl:gap-8'
+            )}
+          >
             {categories.map((category) => (
               <div
                 key={category._id}
-                className='relative group grid [grid-template-areas:stack] overflow-hidden rounded-lg'
+                className={cn('relative group grid overflow-hidden rounded-lg')}
               >
                 <Link
-                  href='#'
-                  className='absolute inset-0 z-10'
+                  href={`/recipes/categories/${category.name.toLowerCase()}`}
+                  className={cn('absolute inset-0 z-10')}
                   prefetch={false}
                 >
-                  <span className='sr-only'>
+                  <span className={cn('sr-only')}>
                     Se {category.name} Oppskrifter
                   </span>
                 </Link>
@@ -61,12 +69,16 @@ export default async function Component() {
                   alt={category?.image?.alt}
                   width={300}
                   height={300}
-                  className='[grid-area:stack] object-cover w-full aspect-square'
+                  className={cn('object-cover w-full aspect-square')}
                 />
-                <div className='flex-1 [grid-area:stack] bg-gradient-to-t from-black/70 to-transparent group-hover:opacity-90 transition-opacity text-white p-6 justify-end flex flex-col gap-2'>
-                  <div className='flex items-center gap-2'>
+                <div
+                  className={cn(
+                    'absolute inset-0 bg-gradient-to-t from-black/70 to-transparent group-hover:opacity-90 transition-opacity text-white p-6 flex flex-col justify-end gap-2'
+                  )}
+                >
+                  <div className={cn('flex items-center gap-2')}>
                     {icons[category.icon as keyof typeof icons]}
-                    <h3 className='font-semibold text-lg tracking-tight'>
+                    <h3 className={cn('font-semibold text-lg tracking-tight')}>
                       {category.name}
                     </h3>
                   </div>
