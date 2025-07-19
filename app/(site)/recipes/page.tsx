@@ -16,7 +16,7 @@ export default async function AllRecipesPage({
     page?: string;
   };
 }) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const user = await supabase.auth.getUser();
   const { data, error, status } = await supabase
     .from('profiles')
