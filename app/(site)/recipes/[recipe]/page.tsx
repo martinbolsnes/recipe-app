@@ -6,7 +6,7 @@ import {
   UtensilsCrossed,
 } from 'lucide-react';
 import Image from 'next/image';
-import { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
 import { getRecipeBySlug } from '@/sanity/sanity.query';
 import type { RecipeType } from '@/types';
 import ConvertDialog from '@/app/components/ConvertDialog';
@@ -14,12 +14,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { recipe: string };
-}): Promise<Metadata> {
-  const slug = params.recipe;
+type Props = {
+  params: Promise<{ recipe: string }>;
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { recipe: slug } = await params;
   const recipe: RecipeType[] = await getRecipeBySlug(slug);
 
   return {
