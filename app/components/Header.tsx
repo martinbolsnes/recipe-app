@@ -1,7 +1,7 @@
 import { createClient } from '../utils/supabase/server';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { Menu, PartyPopper, Plus, Utensils } from 'lucide-react';
+import { Menu, Utensils } from 'lucide-react';
 import Link from 'next/link';
 import {
   Sheet,
@@ -16,8 +16,7 @@ import Avatar from './Profile/Avatar';
 export const Header = async () => {
   const {
     data: { user },
-    error,
-  } = await createClient().auth.getUser();
+  } = await (await createClient()).auth.getUser();
 
   return (
     <header
