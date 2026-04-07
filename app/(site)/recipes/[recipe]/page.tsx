@@ -38,10 +38,8 @@ export async function generateMetadata(
 
 export default async function Recipe({
   params,
-}: {
-  params: { recipe: string };
-}) {
-  const slug = params.recipe;
+}: Props) {
+  const { recipe: slug } = await params;
   const recipe: RecipeType[] = await getRecipeBySlug(slug);
   return (
     <main className={cn('min-h-screen container mx-auto py-4 px-2 md:px-4')}>
