@@ -7,15 +7,18 @@ import { sanityFetch } from '@/sanity/sanity.client';
 import { recipeQuery } from '@/sanity/sanity.query';
 import type { RecipeType } from '@/types';
 
-export default async function AllRecipesPage({
-  searchParams,
-}: {
-  searchParams?: {
+type Props = {
+  searchParams?: Promise<{
     query?: string;
     category?: string;
     page?: string;
-  };
-}) {
+  }>;
+};
+
+export default async function AllRecipesPage({
+  searchParams,
+}: Props) {
+  const resolvedSearchParams = await searchParams;
   const supabase = await createClient();
   const user = await supabase.auth.getUser();
   const { data, error, status } = await supabase
@@ -23,9 +26,9 @@ export default async function AllRecipesPage({
     .select(`username`)
     .eq('id', user.data.user?.id)
     .single();
-  const query = searchParams?.query || '';
-  const category = searchParams?.category || '';
-  const currentPage = Number(searchParams?.page) || 1;
+  const query = resolvedSearchParams?.query || '';
+  const category = resolvedSearchParams?.category || '';
+  const currentPage = Number(resolvedSearchParams?.page) || 1;
 
   const allRecipes: RecipeType[] = await sanityFetch({
     query: recipeQuery,
