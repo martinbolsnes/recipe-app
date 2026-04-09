@@ -10,7 +10,7 @@ import {
 import { CircleUserRound } from 'lucide-react';
 
 export default async function AvatarComponent() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: user, error } = await supabase.auth.getUser();
 
   return (
