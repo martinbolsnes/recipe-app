@@ -8,7 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import AccountForm from '../../components/Profile/AccountForm';
 
 export default async function PrivatePage() {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const {
     data: { user },
